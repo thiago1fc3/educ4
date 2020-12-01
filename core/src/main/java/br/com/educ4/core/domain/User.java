@@ -1,17 +1,13 @@
 package br.com.educ4.core.domain;
 
+import lombok.Builder;
+import lombok.Getter;
+
+@Getter
+@Builder
 public class User {
-
-    private String name;
-
-    public void name(String name){
-        if(name == null || name.length() < 3)
-            throw new RuntimeException("O nome não pode ser menor do que 3 letras");
-
-        this.name = name;
-    }
-
-    public String name(){
-        return this.name;
-    }
+    private final String id;
+    private final String username;
+    private final String name;
+    private final String picture;
 }
