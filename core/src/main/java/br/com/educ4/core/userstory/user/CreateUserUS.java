@@ -1,7 +1,7 @@
 package br.com.educ4.core.userstory.user;
 
 import br.com.educ4.core.domain.User;
-import br.com.educ4.core.ports.driven.repository.user.CheckIfUsernameExitsUserRepositoryPort;
+import br.com.educ4.core.ports.driven.repository.user.ExitsUserByUsernameRepositoryPort;
 import br.com.educ4.core.ports.driven.repository.user.SaveUserRepositoryPort;
 import br.com.educ4.core.ports.driver.user.CreateUserPort;
 import br.com.educ4.core.services.user.CreateUserService;
@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CreateUserUS implements CreateUserPort {
 
-    private final CheckIfUsernameExitsUserRepositoryPort checkIfUsernameExitsUser;
+    private final ExitsUserByUsernameRepositoryPort checkIfUsernameExitsUser;
     private final SaveUserRepositoryPort saveUser;
 
     @Override

@@ -11,5 +11,18 @@
 
     <artifactId>mongo.repository</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+            <version>2.3.1.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>br.com.educ4</groupId>
+            <artifactId>core</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
 
 </project>

@@ -6,7 +6,7 @@ import br.com.educ4.core.ports.driven.repository.user.SaveUserRepositoryPort;
 import java.util.Objects;
 import java.util.UUID;
 
-public class SaveUserRepositoryAdapter implements SaveUserRepositoryPort {
+public class SaveUserFakeRepository implements SaveUserRepositoryPort {
 
     @Override
     public User execute(User user) {

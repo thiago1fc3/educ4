@@ -1,5 +1,5 @@
 package br.com.educ4.core.ports.driven.repository.user;
 
-public interface CheckIfUsernameExitsUserRepositoryPort {
+public interface ExitsUserByUsernameRepositoryPort {
     public boolean execute(String username);
 }

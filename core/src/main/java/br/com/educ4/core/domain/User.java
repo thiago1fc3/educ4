@@ -8,8 +8,12 @@ import lombok.Getter;
 @Builder
 @EqualsAndHashCode(of = "id")
 public class User {
-    private final String id;
+    private String id;
     private final String username;
     private final String name;
     private final String picture;
+
+    public void setId(String id){
+        this.id = id;
+    }
 }

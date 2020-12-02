@@ -10,6 +10,7 @@
         <module name="core" />
         <module name="security" />
         <module name="api" />
+        <module name="mongo.repository" />
       </profile>
     </annotationProcessing>
   </component>
