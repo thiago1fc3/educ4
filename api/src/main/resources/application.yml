@@ -4,7 +4,7 @@ server:
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://educ4:Xee6k5svsWsOMNrk@cluster0.pyxqz.mongodb.net/educ4
+      uri: mongodb+srv://educ4:Xee6k5svsWsOMNrk@cluster0.pyxqz.mongodb.net/dev-educ4
   security:
     oauth2:
       client:

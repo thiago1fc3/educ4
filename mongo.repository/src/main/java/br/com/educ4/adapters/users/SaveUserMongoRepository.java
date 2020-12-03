@@ -15,6 +15,8 @@ public class SaveUserMongoRepository implements SaveUserRepositoryPort {
 
     @Override
     public User execute(User user) {
+
+        // TODO Refatorar esse código
         var userDocument = UserDocument.fromUser(user);
         userDocument = repository.save(userDocument);
 

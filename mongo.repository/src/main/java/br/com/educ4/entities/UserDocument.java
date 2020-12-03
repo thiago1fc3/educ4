@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Builder
-@Document("user")
+@Document("users")
 public class UserDocument {
 
     private String id;

@@ -4,7 +4,7 @@ import br.com.educ4.core.domain.User;
 
 import java.util.Objects;
 
-public class CreateUserService {
+public class UserService {
 
     public static User execute(User user){
 
