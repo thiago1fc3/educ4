@@ -14,6 +14,7 @@ public class UserDocument {
     private String username;
     private String name;
     private String picture;
+    private boolean enabled;
 
     public static UserDocument fromUser(User user){
         return UserDocument.builder()
@@ -21,6 +22,7 @@ public class UserDocument {
                 .username(user.getUsername())
                 .name(user.getName())
                 .picture(user.getPicture())
+                .enabled(user.isEnabled())
                 .build();
     }
 }

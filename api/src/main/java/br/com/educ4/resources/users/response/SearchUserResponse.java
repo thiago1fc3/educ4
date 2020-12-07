@@ -6,19 +6,18 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class UserCreateResponse {
-
+public class SearchUserResponse {
     private final String id;
-    private final String name;
-    private final String email;
+    private final String username;
     private final String picture;
+    private final boolean enabled;
 
-    public static UserCreateResponse fromUser(User user){
-        return UserCreateResponse.builder()
+    public static SearchUserResponse fromUser(User user){
+        return SearchUserResponse.builder()
                 .id(user.getId())
-                .name(user.getName())
-                .email(user.getUsername())
+                .username(user.getUsername())
                 .picture(user.getPicture())
+                .enabled(user.isEnabled())
                 .build();
     }
 }
