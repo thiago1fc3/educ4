@@ -16,10 +16,11 @@ public class CreateUserUS implements CreateUserPort {
     @Override
     public User execute(User user) {
 
+        UserService.execute(user);
+
         if(checkIfUsernameExitsUser.execute(user.getUsername()))
             throw new RuntimeException("Usuário já existe");
 
-        UserService.execute(user);
 
         return saveUser.execute(user);
     }
