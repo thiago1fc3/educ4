@@ -6,6 +6,9 @@ import br.com.educ4.core.ports.driven.repository.user.SaveUserRepositoryPort;
 import br.com.educ4.core.ports.driver.user.EnableUserPort;
 import lombok.RequiredArgsConstructor;
 
+import javax.inject.Named;
+
+@Named
 @RequiredArgsConstructor
 public class EnableUserUS implements EnableUserPort {
 

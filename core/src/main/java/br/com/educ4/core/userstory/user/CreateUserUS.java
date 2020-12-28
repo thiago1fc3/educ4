@@ -7,6 +7,9 @@ import br.com.educ4.core.ports.driver.user.CreateUserPort;
 import br.com.educ4.core.services.user.UserService;
 import lombok.RequiredArgsConstructor;
 
+import javax.inject.Named;
+
+@Named
 @RequiredArgsConstructor
 public class CreateUserUS implements CreateUserPort {
 

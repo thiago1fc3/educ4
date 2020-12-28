@@ -10,7 +10,7 @@ import lombok.Setter;
 @Builder
 @EqualsAndHashCode(of = "id")
 public class User {
-    private String id; // TODO id to final
+    private String id;
     private final String username;
 
     private String name;

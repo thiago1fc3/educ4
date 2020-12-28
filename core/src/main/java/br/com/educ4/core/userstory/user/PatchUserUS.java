@@ -7,9 +7,12 @@ import br.com.educ4.core.ports.driver.user.PatchUserPort;
 import br.com.educ4.core.services.user.UserService;
 import lombok.RequiredArgsConstructor;
 
+import javax.inject.Named;
+
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
+@Named
 @RequiredArgsConstructor
 public class PatchUserUS implements PatchUserPort {
 

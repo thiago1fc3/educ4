@@ -1,12 +1,10 @@
-package br.com.educ4.resources.school.request;
+package br.com.educ4.resources.schools.request;
 
 import br.com.educ4.core.domain.School;
-import br.com.educ4.core.domain.User;
 import lombok.Setter;
 
 @Setter
-
-public class CreateSchoolRequest {
+public class SchoolRequest {
 
     private String name;
 
