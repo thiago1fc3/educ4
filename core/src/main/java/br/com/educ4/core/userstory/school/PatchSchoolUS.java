@@ -3,9 +3,12 @@ package br.com.educ4.core.userstory.school;
 import br.com.educ4.core.domain.School;
 import br.com.educ4.core.ports.driven.repository.school.SchoolRepositoryPort;
 import br.com.educ4.core.ports.driver.school.PatchSchoolPort;
+import br.com.educ4.core.utils.MapperConfig;
 import lombok.RequiredArgsConstructor;
 
 import javax.inject.Named;
+
+import static br.com.educ4.core.utils.MapperConfig.getMapper;
 
 @Named
 @RequiredArgsConstructor
@@ -17,7 +20,8 @@ public class PatchSchoolUS implements PatchSchoolPort {
     public School execute(String schoolId, School school) {
 
         var dbSchool = findSchoolByIdlUS.execute(schoolId);
-        dbSchool.setName(school.getName());
+
+        getMapper().map(school, dbSchool);
 
         return repository.save(dbSchool);
     }

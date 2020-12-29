@@ -41,6 +41,7 @@ public class SchoolResource {
 
     @GetMapping("{schoolId}")
     public School getById(@PathVariable String institutionId, @PathVariable String schoolId) {
+        // TODO Verificar se a escola pertence a instituição
         return findSchoolByIdPort.execute(schoolId);
     }
 }

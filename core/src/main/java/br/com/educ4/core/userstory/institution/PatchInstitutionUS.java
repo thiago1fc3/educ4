@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 
 import javax.inject.Named;
 
+import static br.com.educ4.core.utils.MapperConfig.getMapper;
+
 @Named
 @RequiredArgsConstructor
 public class PatchInstitutionUS implements PatchInstitutionPort {
@@ -18,7 +20,7 @@ public class PatchInstitutionUS implements PatchInstitutionPort {
     public Institution execute(String institutionId, Institution institution) {
         var dbInstitution = findInstitutionByIdUS.execute(institutionId);
 
-        dbInstitution.setName(institution.getName());
+        getMapper().map(institution, dbInstitution);
 
         return repository.save(dbInstitution);
     }
