@@ -9,7 +9,7 @@ import javax.inject.Named;
 
 @Named
 @RequiredArgsConstructor
-public class FindClassroomUSById implements FindClassroomByIdPort {
+public class FindClassroomByIdUS implements FindClassroomByIdPort {
 
     private final ClassroomRepositoryPort repository;
 

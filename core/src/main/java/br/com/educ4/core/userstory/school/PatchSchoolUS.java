@@ -1,7 +1,7 @@
 package br.com.educ4.core.userstory.school;
 
 import br.com.educ4.core.domain.School;
-import br.com.educ4.core.ports.driven.repository.school.SaveSchoolRepositoryPort;
+import br.com.educ4.core.ports.driven.repository.school.SchoolRepositoryPort;
 import br.com.educ4.core.ports.driver.school.PatchSchoolPort;
 import lombok.RequiredArgsConstructor;
 
@@ -11,14 +11,14 @@ import javax.inject.Named;
 @RequiredArgsConstructor
 public class PatchSchoolUS implements PatchSchoolPort {
 
-    private final FindByIdSchoolUS findByIdSchoolUS;
-    private final SaveSchoolRepositoryPort saveSchoolRepositoryPort;
+    private final FindSchoolByIdUS findSchoolByIdlUS;
+    private final SchoolRepositoryPort repository;
 
     public School execute(String schoolId, School school) {
 
-        var dbSchool = findByIdSchoolUS.execute(schoolId);
+        var dbSchool = findSchoolByIdlUS.execute(schoolId);
         dbSchool.setName(school.getName());
 
-        return saveSchoolRepositoryPort.execute(dbSchool);
+        return repository.save(dbSchool);
     }
 }

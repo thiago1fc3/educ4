@@ -11,8 +11,8 @@ import javax.inject.Named;
 @RequiredArgsConstructor
 public class PatchClassroomUS implements PatchClassroomPort {
 
-    private final FindClassroomUSById findClassroomByIdUS;
-    private final ClassroomRepositoryPort saveClassroomRepositoryPort;
+    private final FindClassroomByIdUS findClassroomByIdUS;
+    private final ClassroomRepositoryPort repository;
 
     @Override
     public Classroom execute(String classroomId, Classroom classroom) {
@@ -23,6 +23,6 @@ public class PatchClassroomUS implements PatchClassroomPort {
         dbClassroom.setEndDate(classroom.getEndDate());
         dbClassroom.setCourse(classroom.getCourse());
 
-        return saveClassroomRepositoryPort.save(dbClassroom);
+        return repository.save(dbClassroom);
     }
 }

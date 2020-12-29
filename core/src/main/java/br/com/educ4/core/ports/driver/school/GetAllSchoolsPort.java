@@ -4,7 +4,7 @@ import br.com.educ4.core.domain.School;
 
 import java.util.List;
 
-public interface ListAllSchoolsPort {
+public interface GetAllSchoolsPort {
 
     List<School> execute();
 
