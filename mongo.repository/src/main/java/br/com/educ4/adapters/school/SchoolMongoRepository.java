@@ -29,4 +29,9 @@ public class SchoolMongoRepository implements SchoolRepositoryPort {
     public List<School> findAll() {
         return repository.findAll();
     }
+
+    @Override
+    public List<School> findByInstitutionId(String institutionId) {
+        return repository.findByInstitutionId(institutionId);
+    }
 }

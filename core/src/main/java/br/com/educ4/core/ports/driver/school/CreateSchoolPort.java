@@ -4,6 +4,6 @@ import br.com.educ4.core.domain.School;
 
 public interface CreateSchoolPort {
 
-    School execute(School school);
+    School execute(String institutionId, School school);
 
 }

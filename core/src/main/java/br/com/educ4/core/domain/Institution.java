@@ -9,11 +9,9 @@ import lombok.Setter;
 @Setter
 @Builder
 @EqualsAndHashCode(of = "id")
-public class School {
+public class Institution {
 
     private String id;
     private String name;
-
-    private String institutionId;
 
 }

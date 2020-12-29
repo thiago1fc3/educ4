@@ -11,5 +11,7 @@ public interface SchoolRepositoryPort {
     School save(School school);
 
     List<School> findAll();
+
+    List<School> findByInstitutionId(String institutionId);
     
 }
