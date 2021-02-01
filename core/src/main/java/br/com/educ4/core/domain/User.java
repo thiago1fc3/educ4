@@ -15,7 +15,7 @@ public class User {
 
     private String name;
     private String picture;
-    private boolean enabled = true;
+    private boolean enabled;
 
 }
 
