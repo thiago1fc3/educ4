@@ -5,6 +5,11 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
 @Getter
 @Setter
 @Builder
@@ -15,5 +20,18 @@ public class School {
     private String name;
 
     private String institutionId;
+    private Set<String> coordinatorsIds;
+
+    public void addCoordinators(Set<String> coordinatorsIds) {
+        if(Objects.isNull(this.coordinatorsIds))
+            this.coordinatorsIds = new HashSet<>();
+
+        this.coordinatorsIds.addAll(coordinatorsIds);
+    }
+
+    public void removeCoordinators(Set<String> coordinatorsIds) {
+        if(Objects.nonNull(this.coordinatorsIds))
+            this.coordinatorsIds.removeAll(coordinatorsIds);
+    }
 
 }
