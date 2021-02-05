@@ -3,7 +3,6 @@ package br.com.educ4.core.userstory.classroom;
 import br.com.educ4.core.domain.Classroom;
 import br.com.educ4.core.ports.driven.repository.classroom.ClassroomRepositoryPort;
 import br.com.educ4.core.ports.driver.classroom.PatchClassroomPort;
-import br.com.educ4.core.utils.MapperConfig;
 import lombok.RequiredArgsConstructor;
 
 import javax.inject.Named;

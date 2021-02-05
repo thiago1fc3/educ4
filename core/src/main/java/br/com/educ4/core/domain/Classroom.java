@@ -4,12 +4,17 @@ import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Getter
 @Setter
 @Builder
+@Accessors(chain = true)
 @EqualsAndHashCode(of = "id")
 public class Classroom {
 
@@ -20,6 +25,15 @@ public class Classroom {
     private LocalDate endDate;
 
     private String schoolId;
+
+    private List<Collaborator> collaborators;
+
+    public void addCollaborator(Collaborator collaborator) {
+        if (Objects.isNull(collaborators))
+            collaborators = new ArrayList<>();
+
+        collaborators.add(collaborator);
+    }
 
 }
 

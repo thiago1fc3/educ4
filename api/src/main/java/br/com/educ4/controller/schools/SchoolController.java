@@ -1,11 +1,11 @@
 package br.com.educ4.controller.schools;
 
+import br.com.educ4.controller.schools.request.SchoolRequest;
 import br.com.educ4.core.domain.School;
 import br.com.educ4.core.ports.driver.school.CreateSchoolPort;
 import br.com.educ4.core.ports.driver.school.FindSchoolByIdPort;
 import br.com.educ4.core.ports.driver.school.GetSchoolsByInstitutionIdPort;
 import br.com.educ4.core.ports.driver.school.PatchSchoolPort;
-import br.com.educ4.controller.schools.request.SchoolRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

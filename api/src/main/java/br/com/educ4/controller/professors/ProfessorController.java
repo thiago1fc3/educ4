@@ -1,7 +1,7 @@
 package br.com.educ4.controller.professors;
 
-import br.com.educ4.core.ports.driver.professor.CreateProfessorPort;
 import br.com.educ4.controller.professors.request.ProfessorRequest;
+import br.com.educ4.core.ports.driver.professor.CreateProfessorPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,7 +1,7 @@
 package br.com.educ4.controller.schools;
 
-import br.com.educ4.core.ports.driver.school.AddProfessorsToSchoolPort;
 import br.com.educ4.controller.schools.request.IdsRequest;
+import br.com.educ4.core.ports.driver.school.AddProfessorsToSchoolPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

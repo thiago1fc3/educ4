@@ -1,11 +1,11 @@
 package br.com.educ4.controller.institutions;
 
+import br.com.educ4.controller.institutions.request.InstitutionRequest;
 import br.com.educ4.core.domain.Institution;
 import br.com.educ4.core.ports.driver.institution.CreateInstitutionPort;
 import br.com.educ4.core.ports.driver.institution.FindInstitutionByIdPort;
 import br.com.educ4.core.ports.driver.institution.GetAllInstitutionsPort;
 import br.com.educ4.core.ports.driver.institution.PatchInstitutionPort;
-import br.com.educ4.controller.institutions.request.InstitutionRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

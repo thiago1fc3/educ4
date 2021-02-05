@@ -4,8 +4,8 @@ import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -13,6 +13,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Builder
+@Accessors(chain = true)
 @EqualsAndHashCode(of = "id")
 public class School {
 
@@ -36,7 +37,7 @@ public class School {
     }
 
     public void addProfessors(Set<String> professorsIds) {
-        if(Objects.isNull(this.professorsIds))
+        if (Objects.isNull(this.professorsIds))
             this.professorsIds = new HashSet<>();
 
         this.professorsIds.addAll(professorsIds);
