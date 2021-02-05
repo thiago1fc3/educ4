@@ -1,11 +1,11 @@
-package br.com.educ4.resources.classrooms;
+package br.com.educ4.controller.classrooms;
 
 import br.com.educ4.core.domain.Classroom;
 import br.com.educ4.core.ports.driver.classroom.CreateClassroomPort;
 import br.com.educ4.core.ports.driver.classroom.FindClassroomByIdPort;
 import br.com.educ4.core.ports.driver.classroom.GetAllClassroomsPort;
 import br.com.educ4.core.ports.driver.classroom.PatchClassroomPort;
-import br.com.educ4.resources.classrooms.request.ClassroomRequest;
+import br.com.educ4.controller.classrooms.request.ClassroomRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +15,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("schools/{schoolId}/classrooms")
 @RequiredArgsConstructor
-public class ClassroomResource {
+public class ClassroomController {
 
     private final CreateClassroomPort createClassroomPort;
     private final PatchClassroomPort patchClassroomPort;

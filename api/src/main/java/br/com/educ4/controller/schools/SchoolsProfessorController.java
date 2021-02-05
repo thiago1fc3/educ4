@@ -1,9 +1,7 @@
-package br.com.educ4.resources.schools;
+package br.com.educ4.controller.schools;
 
-import br.com.educ4.core.ports.driver.school.AddCoordinatorsToSchoolPort;
 import br.com.educ4.core.ports.driver.school.AddProfessorsToSchoolPort;
-import br.com.educ4.core.ports.driver.school.RemoveCoordinatorsToSchoolPort;
-import br.com.educ4.resources.schools.request.IdsRequest;
+import br.com.educ4.controller.schools.request.IdsRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +10,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("schools/{schoolId}/professors")
 @RequiredArgsConstructor
-public class SchoolsProfessorResource {
+public class SchoolsProfessorController {
     private final AddProfessorsToSchoolPort addProfessorsToSchoolPort;
 
     @PatchMapping

@@ -1,4 +1,4 @@
-package br.com.educ4.resources.classrooms.request;
+package br.com.educ4.controller.classrooms.request;
 
 import br.com.educ4.core.domain.Classroom;
 import lombok.Setter;

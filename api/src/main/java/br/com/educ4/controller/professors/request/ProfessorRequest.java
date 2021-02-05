@@ -1,4 +1,4 @@
-package br.com.educ4.resources.professors.request;
+package br.com.educ4.controller.professors.request;
 
 import br.com.educ4.core.domain.Professor;
 import lombok.Setter;

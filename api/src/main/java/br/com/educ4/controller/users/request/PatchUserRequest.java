@@ -1,4 +1,4 @@
-package br.com.educ4.resources.users.request;
+package br.com.educ4.controller.users.request;
 
 import br.com.educ4.core.domain.User;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package br.com.educ4.resources.schools.request;
+package br.com.educ4.controller.schools.request;
 
 import lombok.Getter;
 import lombok.Setter;

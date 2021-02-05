@@ -1,11 +1,11 @@
-package br.com.educ4.resources.users;
+package br.com.educ4.controller.users;
 
 import br.com.educ4.core.ports.driver.user.EnableUserPort;
 import br.com.educ4.core.ports.driver.user.PatchUserPort;
 import br.com.educ4.core.ports.driver.user.SearchUserPort;
-import br.com.educ4.resources.users.request.PatchUserRequest;
-import br.com.educ4.resources.users.response.DefaultUserResponse;
-import br.com.educ4.resources.users.response.SearchUserResponse;
+import br.com.educ4.controller.users.request.PatchUserRequest;
+import br.com.educ4.controller.users.response.DefaultUserResponse;
+import br.com.educ4.controller.users.response.SearchUserResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("users")
 @RequiredArgsConstructor
-public class UserResource {
+public class UserController {
 
     private final PatchUserPort patchUserPort;
     private final EnableUserPort enableUserPort;
