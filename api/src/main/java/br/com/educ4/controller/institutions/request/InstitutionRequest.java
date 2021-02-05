@@ -1,4 +1,4 @@
-package br.com.educ4.resources.institutions.request;
+package br.com.educ4.controller.institutions.request;
 
 import br.com.educ4.core.domain.Institution;
 import lombok.Setter;

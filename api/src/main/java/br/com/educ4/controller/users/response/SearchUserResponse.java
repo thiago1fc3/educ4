@@ -1,4 +1,4 @@
-package br.com.educ4.resources.users.response;
+package br.com.educ4.controller.users.response;
 
 import br.com.educ4.core.domain.User;
 import lombok.Builder;

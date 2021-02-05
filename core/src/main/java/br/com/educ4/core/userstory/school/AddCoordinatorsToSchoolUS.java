@@ -2,26 +2,23 @@ package br.com.educ4.core.userstory.school;
 
 import br.com.educ4.core.domain.School;
 import br.com.educ4.core.ports.driven.repository.school.SchoolRepositoryPort;
-import br.com.educ4.core.ports.driver.school.PatchSchoolPort;
+import br.com.educ4.core.ports.driver.school.AddCoordinatorsToSchoolPort;
 import lombok.RequiredArgsConstructor;
 
 import javax.inject.Named;
-
-import static br.com.educ4.core.utils.MapperConfig.getMapper;
+import java.util.Set;
 
 @Named
 @RequiredArgsConstructor
-public class PatchSchoolUS implements PatchSchoolPort {
+public class AddCoordinatorsToSchoolUS implements AddCoordinatorsToSchoolPort {
 
     private final FindSchoolByIdUS findSchoolByIdlUS;
     private final SchoolRepositoryPort repository;
 
-    public School execute(String schoolId, School school) {
-
+    @Override
+    public School execute(String schoolId, Set<String> coordinatorsIds) {
         var dbSchool = findSchoolByIdlUS.execute(schoolId);
-
-        getMapper().map(school, dbSchool);
-
+        dbSchool.addCoordinators(coordinatorsIds);
         return repository.save(dbSchool);
     }
 }

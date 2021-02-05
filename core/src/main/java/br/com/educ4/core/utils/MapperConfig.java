@@ -1,6 +1,5 @@
 package br.com.educ4.core.utils;
 
-import org.modelmapper.Conditions;
 import org.modelmapper.ModelMapper;
 
 import static org.modelmapper.Conditions.isNotNull;
