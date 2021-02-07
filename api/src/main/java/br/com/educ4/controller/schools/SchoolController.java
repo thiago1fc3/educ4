@@ -36,12 +36,12 @@ public class SchoolController {
 
     @GetMapping
     public List<School> getAll(@PathVariable String institutionId) {
-        return getSchoolsByInstitutionIdPort.execute(institutionId);
+        return getSchoolsByInstitutionIdPort.execute(institutionId, School.class);
     }
 
     @GetMapping("{schoolId}")
     public School getById(@PathVariable String institutionId, @PathVariable String schoolId) {
         // TODO Verificar se a escola pertence a instituição
-        return findSchoolByIdPort.execute(schoolId);
+        return findSchoolByIdPort.execute(schoolId, School.class);
     }
 }

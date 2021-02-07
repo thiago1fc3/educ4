@@ -17,7 +17,7 @@ public class AddProfessorsToSchoolUS implements AddProfessorsToSchoolPort {
 
     @Override
     public School execute(String schoolId, Set<String> professorsIds) {
-        var dbSchool = findSchoolByIdlUS.execute(schoolId);
+        var dbSchool = findSchoolByIdlUS.execute(schoolId, School.class);
         dbSchool.addProfessors(professorsIds);
         return repository.save(dbSchool);
     }

@@ -1,6 +1,5 @@
 package br.com.educ4.core.userstory.school;
 
-import br.com.educ4.core.domain.School;
 import br.com.educ4.core.ports.driven.repository.school.SchoolRepositoryPort;
 import br.com.educ4.core.ports.driver.school.GetSchoolsByInstitutionIdPort;
 import lombok.RequiredArgsConstructor;
@@ -14,8 +13,8 @@ public class GetSchoolsByInstitutionIdUS implements GetSchoolsByInstitutionIdPor
 
     private final SchoolRepositoryPort repository;
 
-    public List<School> execute(String institutionId) {
-        return repository.findByInstitutionId(institutionId);
+    @Override
+    public <T> List<T> execute(String institutionId, Class<T> projection) {
+        return repository.findByInstitutionId(institutionId, projection);
     }
-
 }

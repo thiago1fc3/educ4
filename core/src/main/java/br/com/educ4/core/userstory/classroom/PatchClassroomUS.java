@@ -18,7 +18,7 @@ public class PatchClassroomUS implements PatchClassroomPort {
 
     @Override
     public Classroom execute(String classroomId, Classroom classroom) {
-        var dbClassroom = findClassroomByIdUS.execute(classroomId);
+        var dbClassroom = findClassroomByIdUS.execute(classroomId, Classroom.class);
 
         getMapper().map(classroom, dbClassroom);
 

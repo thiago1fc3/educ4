@@ -10,14 +10,14 @@ import java.util.Set;
 
 @Named
 @RequiredArgsConstructor
-public class RemoveCoordinatorsToSchoolUS implements RemoveCoordinatorsToSchoolPort {
+public class RemoveCoordinatorsInSchoolUS implements RemoveCoordinatorsToSchoolPort {
 
     private final FindSchoolByIdUS findSchoolByIdlUS;
     private final SchoolRepositoryPort repository;
 
     @Override
     public School execute(String schoolId, Set<String> coordinatorsIds) {
-        var dbSchool = findSchoolByIdlUS.execute(schoolId);
+        var dbSchool = findSchoolByIdlUS.execute(schoolId, School.class);
         dbSchool.removeCoordinators(coordinatorsIds);
         return repository.save(dbSchool);
     }

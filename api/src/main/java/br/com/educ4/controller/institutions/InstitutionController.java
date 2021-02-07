@@ -36,11 +36,11 @@ public class InstitutionController {
 
     @GetMapping
     public List<Institution> getAll() {
-        return getAllInstitutionsPort.execute();
+        return getAllInstitutionsPort.execute(Institution.class);
     }
 
     @GetMapping("{institutionId}")
     public Institution getById(@PathVariable String institutionId) {
-        return findInstitutionByIdPort.execute(institutionId);
+        return findInstitutionByIdPort.execute(institutionId, Institution.class);
     }
 }

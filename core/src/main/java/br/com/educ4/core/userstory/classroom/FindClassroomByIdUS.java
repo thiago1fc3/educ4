@@ -1,11 +1,11 @@
 package br.com.educ4.core.userstory.classroom;
 
-import br.com.educ4.core.domain.Classroom;
 import br.com.educ4.core.ports.driven.repository.classroom.ClassroomRepositoryPort;
 import br.com.educ4.core.ports.driver.classroom.FindClassroomByIdPort;
 import lombok.RequiredArgsConstructor;
 
 import javax.inject.Named;
+import java.util.NoSuchElementException;
 
 @Named
 @RequiredArgsConstructor
@@ -13,8 +13,9 @@ public class FindClassroomByIdUS implements FindClassroomByIdPort {
 
     private final ClassroomRepositoryPort repository;
 
-    public Classroom execute(String id) {
-        return repository.findById(id);
+    @Override
+    public <T> T execute(String id, Class<T> projection) {
+        return repository.findById(id, projection).orElseThrow(() -> new NoSuchElementException("Classroom not found!"));
     }
 
 }

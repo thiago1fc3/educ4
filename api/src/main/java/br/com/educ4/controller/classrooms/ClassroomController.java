@@ -37,11 +37,11 @@ public class ClassroomController {
 
     @GetMapping
     public List<Classroom> getAll(@PathVariable String schoolId) {
-        return getAllClassroomsPort.execute();
+        return getAllClassroomsPort.execute(Classroom.class);
     }
 
     @GetMapping("{classroomId}")
     public Classroom getById(@PathVariable String schoolId, @PathVariable String classroomId) {
-        return findClassroomByIdPort.execute(classroomId);
+        return findClassroomByIdPort.execute(classroomId, Classroom.class);
     }
 }

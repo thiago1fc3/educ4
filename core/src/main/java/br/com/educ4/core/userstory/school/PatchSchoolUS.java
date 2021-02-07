@@ -18,7 +18,7 @@ public class PatchSchoolUS implements PatchSchoolPort {
 
     public School execute(String schoolId, School school) {
 
-        var dbSchool = findSchoolByIdlUS.execute(schoolId);
+        var dbSchool = findSchoolByIdlUS.execute(schoolId, School.class);
 
         getMapper().map(school, dbSchool);
 

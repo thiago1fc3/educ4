@@ -17,7 +17,7 @@ public class AddCoordinatorsToSchoolUS implements AddCoordinatorsToSchoolPort {
 
     @Override
     public School execute(String schoolId, Set<String> coordinatorsIds) {
-        var dbSchool = findSchoolByIdlUS.execute(schoolId);
+        var dbSchool = findSchoolByIdlUS.execute(schoolId, School.class);
         dbSchool.addCoordinators(coordinatorsIds);
         return repository.save(dbSchool);
     }
