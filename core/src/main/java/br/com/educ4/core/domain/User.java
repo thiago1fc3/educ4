@@ -13,7 +13,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(of = "id")
 public class User {
     private String id;
-    private final String username;
+    private String username;
 
     private String name;
     private String picture;
