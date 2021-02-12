@@ -1,36 +1,45 @@
 package br.com.educ4.tokens;
 
-import io.jsonwebtoken.Jwts;
+import com.nimbusds.jose.JOSEException;
+import com.nimbusds.jose.JOSEObjectType;
+import com.nimbusds.jose.JWSAlgorithm;
+import com.nimbusds.jose.JWSHeader;
+import com.nimbusds.jose.crypto.ECDSASigner;
+import com.nimbusds.jose.jwk.Curve;
+import com.nimbusds.jose.jwk.gen.ECKeyGenerator;
+import com.nimbusds.jwt.JWTClaimsSet;
+import com.nimbusds.jwt.SignedJWT;
 
-import java.security.SecureRandom;
+import java.time.Instant;
 import java.util.Date;
-import java.util.UUID;
 
-import static br.com.educ4.tokens.Keys.salts;
-import static io.jsonwebtoken.security.Keys.hmacShaKeyFor;
-import static java.lang.String.format;
-import static java.nio.charset.StandardCharsets.UTF_8;
-import static java.time.LocalDateTime.now;
-import static java.time.ZoneId.systemDefault;
-import static java.util.Date.from;
+import static java.util.UUID.randomUUID;
 
 public class GenerateToken {
 
-    private final static SecureRandom secureRandom = new SecureRandom();
+    public static String execute(String id) throws JOSEException {
 
-    public static String execute(String id, String client) {
+        var key = new ECKeyGenerator(Curve.P_256).keyID(randomUUID().toString()).generate();
 
-        var salt = salts[secureRandom.nextInt(salts.length)];
-        var key = hmacShaKeyFor(format("%s%s", salt, client).getBytes(UTF_8));
+        var header = new JWSHeader.Builder(JWSAlgorithm.ES256)
+                .type(JOSEObjectType.JWT)
+                .keyID(key.getKeyID())
+                .build();
 
-        return Jwts.builder()
-                .setSubject(id)
-                .setIssuedAt(new Date())
-                .setExpiration(from(now().plusYears(1).atZone(systemDefault()).toInstant()))
-                .setId(UUID.randomUUID().toString())
-                .claim("salt", salt)
-                .signWith(key)
-                .compact();
+        var payload = new JWTClaimsSet.Builder()
+                .issuer(id)
+                .audience(id)
+                .subject(id)
+                .jwtID(randomUUID().toString())
+                .claim("p", key.toECPublicKey().getFormat())
+                .expirationTime(Date.from(Instant.now().plusSeconds(120)))
+                .build();
+
+        var signedJWT = new SignedJWT(header, payload);
+        signedJWT.sign(new ECDSASigner(key.toECPrivateKey()));
+
+        return signedJWT.serialize();
+
     }
 
 }

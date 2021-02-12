@@ -11,6 +11,7 @@ import javax.inject.Named;
 @Named
 @RequiredArgsConstructor
 public class CreateClassroomUS implements CreateClassroomPort {
+
     private final ClassroomRepositoryPort repository;
 
     @Override
@@ -25,5 +26,6 @@ public class CreateClassroomUS implements CreateClassroomPort {
         classroom.addCollaborator(collaborator);
 
         return repository.save(classroom);
+
     }
 }

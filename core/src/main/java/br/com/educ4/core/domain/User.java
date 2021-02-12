@@ -12,9 +12,9 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @EqualsAndHashCode(of = "id")
 public class User {
+
     private String id;
     private final String username;
-
     private String name;
     private String picture;
     private boolean enabled;
