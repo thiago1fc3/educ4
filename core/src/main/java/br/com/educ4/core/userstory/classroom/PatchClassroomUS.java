@@ -3,7 +3,6 @@ package br.com.educ4.core.userstory.classroom;
 import br.com.educ4.core.domain.Classroom;
 import br.com.educ4.core.ports.driven.repository.classroom.ClassroomRepositoryPort;
 import br.com.educ4.core.ports.driver.classroom.PatchClassroomPort;
-import br.com.educ4.core.utils.MapperConfig;
 import lombok.RequiredArgsConstructor;
 
 import javax.inject.Named;
@@ -19,7 +18,7 @@ public class PatchClassroomUS implements PatchClassroomPort {
 
     @Override
     public Classroom execute(String classroomId, Classroom classroom) {
-        var dbClassroom = findClassroomByIdUS.execute(classroomId);
+        var dbClassroom = findClassroomByIdUS.execute(classroomId, Classroom.class);
 
         getMapper().map(classroom, dbClassroom);
 

@@ -16,4 +16,5 @@ public class CreateProfessorUS implements CreateProfessorPort {
     public Professor execute(Professor professor) {
         return repository.save(professor);
     }
+
 }

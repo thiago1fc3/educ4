@@ -4,14 +4,16 @@ import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 @Getter
 @Setter
 @Builder
+@Accessors(chain = true)
 @EqualsAndHashCode(of = "id")
 public class User {
     private String id;
-    private final String username;
+    private String username;
 
     private String name;
     private String picture;

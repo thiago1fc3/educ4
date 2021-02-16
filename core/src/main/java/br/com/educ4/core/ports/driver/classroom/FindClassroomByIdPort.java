@@ -1,9 +1,7 @@
 package br.com.educ4.core.ports.driver.classroom;
 
-import br.com.educ4.core.domain.Classroom;
-
 public interface FindClassroomByIdPort {
 
-    Classroom execute(String id);
+    <T> T execute(String id, Class<T> projection);
 
 }
