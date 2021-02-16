@@ -6,18 +6,17 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @Builder
 @Accessors(chain = true)
 @EqualsAndHashCode(of = "id")
-public class User {
+public class Week {
+
     private String id;
-    private String username;
-
-    private String name;
-    private String picture;
-    private boolean enabled;
-
+    private LocalDate beginDate;
+    private boolean visible;
+    private String classroomId;
 }
-

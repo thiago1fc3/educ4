@@ -35,8 +35,8 @@ public class ClassroomController {
         return Map.of("id", response.getId());
     }
 
-    @GetMapping
-    public List<Classroom> getAll(@PathVariable String schoolId) {
+    @GetMapping("{userId}")
+    public List<Classroom> getAll(@PathVariable String schoolId, @PathVariable String userId) {
         return getAllClassroomsPort.execute(Classroom.class);
     }
 
