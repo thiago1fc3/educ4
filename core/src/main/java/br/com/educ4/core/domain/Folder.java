@@ -22,4 +22,10 @@ public class Folder {
     private String userId;
     private Set<String> classroomsIds;
 
+    public void addClassrooms(Set<String> classroomsIds) {
+        if (Objects.isNull(this.classroomsIds))
+            this.classroomsIds = new HashSet<>();
+
+        this.classroomsIds.addAll(classroomsIds);
+    }
 }
