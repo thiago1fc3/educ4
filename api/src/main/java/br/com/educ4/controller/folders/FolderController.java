@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@RequestMapping("user/{userId}/folders")
+@RequestMapping("users/{userId}/folders")
 @RequiredArgsConstructor
 public class FolderController {
 

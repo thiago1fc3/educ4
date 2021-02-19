@@ -11,10 +11,10 @@ import lombok.experimental.Accessors;
 @Builder
 @Accessors(chain = true)
 @EqualsAndHashCode(of = "id")
-public class Folder {
+public class ClassroomFolder {
     private String id;
-    private String name;
+    private String folderId;
 
-    private String userId;
+    private String classroomId;
 
 }

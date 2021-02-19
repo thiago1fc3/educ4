@@ -1,4 +1,4 @@
-package br.com.educ4.controller.folders;
+/*package br.com.educ4.controller.folders;
 
 import br.com.educ4.controller.schools.request.IdsRequest;
 import br.com.educ4.core.ports.driver.folder.AddClassroomsToFolderPort;
@@ -18,4 +18,4 @@ public class FolderClassroomController {
         var response = addClassroomsToFolderPort.execute(folderId, request.getIds());
         return Map.of("id", response.getId());
     }
-}
+}*/
