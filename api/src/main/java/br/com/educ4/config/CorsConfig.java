@@ -1,4 +1,4 @@
-package br.com.educ4.controller.auth;
+package br.com.educ4.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
