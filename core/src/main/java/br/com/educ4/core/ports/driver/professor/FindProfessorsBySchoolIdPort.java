@@ -1,7 +1,7 @@
 package br.com.educ4.core.ports.driver.professor;
 
-import java.util.List;
+import java.util.Set;
 
 public interface FindProfessorsBySchoolIdPort {
-    <T> List<T> execute(String schoolId, Class<T> projection);
+    <T> Set<T> execute(String schoolId, Class<T> projection);
 }

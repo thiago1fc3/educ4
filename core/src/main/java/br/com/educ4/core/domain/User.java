@@ -14,10 +14,8 @@ import lombok.experimental.Accessors;
 public class User {
     private String id;
     private String username;
-
     private String name;
     private String picture;
     private boolean enabled;
-
 }
 

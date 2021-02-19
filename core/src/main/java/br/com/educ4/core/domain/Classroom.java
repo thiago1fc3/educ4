@@ -7,9 +7,9 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -26,11 +26,12 @@ public class Classroom {
 
     private String schoolId;
 
-    private List<Collaborator> collaborators;
+    private Set<Collaborator> collaborators;
+    private Set<ClassroomFolder> folders;
 
     public void addCollaborator(Collaborator collaborator) {
         if (Objects.isNull(collaborators))
-            collaborators = new ArrayList<>();
+            collaborators = new HashSet<>();
 
         collaborators.add(collaborator);
     }

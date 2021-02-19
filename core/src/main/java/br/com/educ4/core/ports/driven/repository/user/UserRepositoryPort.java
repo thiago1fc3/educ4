@@ -18,6 +18,6 @@ public interface UserRepositoryPort {
 
     <T> List<T> findBySearch(String q, Class<T> projection);
 
-    <T> List<T> findByIdIn(Set<String> ids, Class<T> projection);
+    <T> Set<T> findByIdIn(Set<String> ids, Class<T> projection);
 
 }

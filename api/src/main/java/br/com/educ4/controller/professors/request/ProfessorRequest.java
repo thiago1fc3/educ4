@@ -10,10 +10,12 @@ public class ProfessorRequest {
 
     @NotEmpty
     private String userId;
+    private String registration;
 
     public Professor toProfessor() {
         return Professor.builder()
                 .userId(userId)
+                .registration(registration)
                 .build();
     }
 

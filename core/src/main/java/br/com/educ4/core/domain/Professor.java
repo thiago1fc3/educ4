@@ -13,5 +13,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(of = "id")
 public class Professor {
     private String id;
+    private String registration;
     private String userId;
+    private String schoolId;
 }

@@ -12,6 +12,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @EqualsAndHashCode(of = "id")
 public class Folder {
+
     private String id;
     private String name;
 

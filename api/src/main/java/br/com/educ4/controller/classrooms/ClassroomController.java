@@ -24,15 +24,13 @@ public class ClassroomController {
 
     @PostMapping
     public Map<String, Object> post(@PathVariable String schoolId, @RequestBody ClassroomRequest request) {
-        // TODO modificar o id do professor para pegar automaticamente do usuário logado
-        var response = createClassroomPort.execute(schoolId, "60180378b82dae580236f108", request.toClassroom());
+        var response = createClassroomPort.execute(schoolId, request.toClassroom());
         return Map.of("id", response.getId());
     }
 
     @PatchMapping("{classroomId}")
-    public Map<String, Object> patch(@PathVariable String schoolId, @PathVariable String classroomId, @RequestBody ClassroomRequest request) {
-        var response = patchClassroomPort.execute(classroomId, request.toClassroom());
-        return Map.of("id", response.getId());
+    public void patch(@PathVariable String schoolId, @PathVariable String classroomId, @RequestBody ClassroomRequest request) {
+        patchClassroomPort.execute(classroomId, request.toClassroom());
     }
 
     @GetMapping("{userId}")

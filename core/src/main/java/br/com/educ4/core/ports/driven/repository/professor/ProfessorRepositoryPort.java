@@ -16,5 +16,10 @@ public interface ProfessorRepositoryPort {
 
     <T> List<T> findByUserId(String userId, Class<T> projection);
 
-    <T> List<T> findByIdIn(Set<String> ids, Class<T> projection);
+    boolean existsBySchoolIdAndUserId(String schoolId, String userId);
+
+    <T> Optional<T> findBySchoolIdAndUserId(String schoolId, String id, Class<T> projection);
+
+    <T> Set<T> findBySchoolId(String schoolId, Class<T> projection);
+
 }

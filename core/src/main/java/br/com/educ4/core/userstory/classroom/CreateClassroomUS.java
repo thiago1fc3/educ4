@@ -5,6 +5,7 @@ import br.com.educ4.core.domain.Collaborator;
 import br.com.educ4.core.domain.Week;
 import br.com.educ4.core.ports.driven.repository.classroom.ClassroomRepositoryPort;
 import br.com.educ4.core.ports.driven.repository.weeks.WeekRepositoryPort;
+import br.com.educ4.core.ports.driven.security.AuthUserPort;
 import br.com.educ4.core.ports.driver.classroom.CreateClassroomPort;
 import lombok.RequiredArgsConstructor;
 
@@ -15,22 +16,23 @@ import javax.inject.Named;
 public class CreateClassroomUS implements CreateClassroomPort {
     private final ClassroomRepositoryPort repository;
     private final WeekRepositoryPort weekRepositoryPort;
+    private final AuthUserPort authUserPort;
 
     @Override
-    public Classroom execute(String schoolId, String professorId, Classroom classroom) {
+    public Classroom execute(String schoolId, Classroom classroom) {
 
         classroom.setSchoolId(schoolId);
 
         var collaborator = Collaborator.create()
                 .setAdmin(true)
-                .setProfessorId(professorId);
+                .setProfessorId(authUserPort.getUserId());
 
         classroom.addCollaborator(collaborator);
 
         classroom = repository.save(classroom);
 
         var date = classroom.getBeginDate();
-        while(date.isBefore(classroom.getEndDate())) {
+        while (date.isBefore(classroom.getEndDate())) {
             var week = Week.builder()
                     .beginDate(date)
                     .classroomId(classroom.getId())

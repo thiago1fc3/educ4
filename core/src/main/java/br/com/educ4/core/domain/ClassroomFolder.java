@@ -1,7 +1,6 @@
 package br.com.educ4.core.domain;
 
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -10,11 +9,9 @@ import lombok.experimental.Accessors;
 @Setter
 @Builder
 @Accessors(chain = true)
-@EqualsAndHashCode(of = "id")
 public class ClassroomFolder {
-    private String id;
-    private String folderId;
 
-    private String classroomId;
+    private String folderId;
+    private String userId;
 
 }
