@@ -10,7 +10,7 @@ public class FolderRequest {
 
     public Folder toFolder() {
         return Folder.builder()
-                .userId(name)
+                .name(name)
                 .build();
     }
 }

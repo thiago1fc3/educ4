@@ -1,10 +1,10 @@
 package br.com.educ4.core.ports.driven.repository.professor;
 
 import br.com.educ4.core.domain.Professor;
+import org.bson.types.ObjectId;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 public interface ProfessorRepositoryPort {
 
@@ -16,10 +16,8 @@ public interface ProfessorRepositoryPort {
 
     <T> List<T> findByUserId(String userId, Class<T> projection);
 
-    boolean existsBySchoolIdAndUserId(String schoolId, String userId);
+    boolean existsBySchoolIdAndUserId(String schoolId, ObjectId userId);
 
-    <T> Optional<T> findBySchoolIdAndUserId(String schoolId, String id, Class<T> projection);
-
-    <T> Set<T> findBySchoolId(String schoolId, Class<T> projection);
+    <T> Optional<T> findBySchoolIdAndUserId(String schoolId, ObjectId id, Class<T> projection);
 
 }

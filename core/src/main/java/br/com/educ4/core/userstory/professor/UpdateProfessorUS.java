@@ -5,6 +5,7 @@ import br.com.educ4.core.ports.driven.repository.professor.ProfessorRepositoryPo
 import br.com.educ4.core.ports.driver.professor.FindProfessorBySchoolIdAndUserIdPort;
 import br.com.educ4.core.ports.driver.professor.UpdateProfessorPort;
 import lombok.RequiredArgsConstructor;
+import org.bson.types.ObjectId;
 
 import javax.inject.Named;
 
@@ -16,7 +17,7 @@ public class UpdateProfessorUS implements UpdateProfessorPort {
     private final ProfessorRepositoryPort repository;
 
     @Override
-    public Professor execute(String schoolId, String userId, Professor professor) {
+    public Professor execute(String schoolId, ObjectId userId, Professor professor) {
         var dbProfessor = findProfessorBySchoolIdAndUserIdPort.execute(schoolId, userId, Professor.class);
 
         dbProfessor.setRegistration(professor.getRegistration());

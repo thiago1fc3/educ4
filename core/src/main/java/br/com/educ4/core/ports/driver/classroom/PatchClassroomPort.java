@@ -4,6 +4,6 @@ import br.com.educ4.core.domain.Classroom;
 
 public interface PatchClassroomPort {
 
-    Classroom execute(String classroomId, Classroom classroom);
+    Classroom execute(String id, Classroom classroom);
 
 }

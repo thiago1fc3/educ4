@@ -4,14 +4,21 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
 @Builder
 @Accessors(chain = true)
+@Document
 public class ClassroomFolder {
 
-    private String folderId;
-    private String userId;
+    @Indexed
+    private ObjectId folderId;
+
+    @Indexed
+    private ObjectId userId;
 
 }

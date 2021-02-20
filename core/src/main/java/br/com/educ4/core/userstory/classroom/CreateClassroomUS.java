@@ -8,6 +8,7 @@ import br.com.educ4.core.ports.driven.repository.weeks.WeekRepositoryPort;
 import br.com.educ4.core.ports.driven.security.AuthUserPort;
 import br.com.educ4.core.ports.driver.classroom.CreateClassroomPort;
 import lombok.RequiredArgsConstructor;
+import org.bson.types.ObjectId;
 
 import javax.inject.Named;
 
@@ -19,13 +20,13 @@ public class CreateClassroomUS implements CreateClassroomPort {
     private final AuthUserPort authUserPort;
 
     @Override
-    public Classroom execute(String schoolId, Classroom classroom) {
+    public Classroom execute(ObjectId schoolId, Classroom classroom) {
 
         classroom.setSchoolId(schoolId);
 
         var collaborator = Collaborator.create()
                 .setAdmin(true)
-                .setProfessorId(authUserPort.getUserId());
+                .setProfessorId(new ObjectId(authUserPort.getUserId()));
 
         classroom.addCollaborator(collaborator);
 
@@ -35,7 +36,7 @@ public class CreateClassroomUS implements CreateClassroomPort {
         while (date.isBefore(classroom.getEndDate())) {
             var week = Week.builder()
                     .beginDate(date)
-                    .classroomId(classroom.getId())
+                    .classroomId(new ObjectId(classroom.getId()))
                     .visible(false)
                     .build();
             date = date.plusWeeks(1);

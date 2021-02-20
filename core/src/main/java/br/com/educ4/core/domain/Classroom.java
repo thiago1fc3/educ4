@@ -5,6 +5,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -16,6 +19,7 @@ import java.util.Set;
 @Builder
 @Accessors(chain = true)
 @EqualsAndHashCode(of = "id")
+@Document
 public class Classroom {
 
     private String id;
@@ -24,7 +28,8 @@ public class Classroom {
     private LocalDate beginDate;
     private LocalDate endDate;
 
-    private String schoolId;
+    @Indexed
+    private ObjectId schoolId;
 
     private Set<Collaborator> collaborators;
     private Set<ClassroomFolder> folders;

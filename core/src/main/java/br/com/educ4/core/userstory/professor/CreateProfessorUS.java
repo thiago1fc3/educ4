@@ -2,9 +2,10 @@ package br.com.educ4.core.userstory.professor;
 
 import br.com.educ4.core.domain.Professor;
 import br.com.educ4.core.ports.driven.repository.professor.ProfessorRepositoryPort;
-import br.com.educ4.core.ports.driver.professor.FindProfessorBySchoolIdAndUserIdPort;
 import br.com.educ4.core.ports.driver.professor.CreateProfessorPort;
+import br.com.educ4.core.ports.driver.professor.FindProfessorBySchoolIdAndUserIdPort;
 import lombok.RequiredArgsConstructor;
+import org.bson.types.ObjectId;
 
 import javax.inject.Named;
 
@@ -18,10 +19,11 @@ public class CreateProfessorUS implements CreateProfessorPort {
 
     @Override
     public Professor execute(String schoolId, Professor professor) {
+
         var exists = existsProfessorBySchoolIdAndUserIdUS.execute(schoolId, professor.getUserId());
 
         if (!exists) {
-            professor.setSchoolId(schoolId);
+            professor.setSchoolId(new ObjectId(schoolId));
             return repository.save(professor);
         }
 

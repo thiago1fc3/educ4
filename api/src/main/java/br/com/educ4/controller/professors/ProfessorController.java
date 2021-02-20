@@ -1,18 +1,16 @@
 package br.com.educ4.controller.professors;
 
 import br.com.educ4.controller.professors.request.ProfessorRequest;
-import br.com.educ4.controller.professors.response.ShowNameResponse;
-import br.com.educ4.core.domain.Professor;
-import br.com.educ4.core.ports.driver.professor.CreateProfessorPort;
-import br.com.educ4.core.ports.driver.professor.FindProfessorByIdPort;
-import br.com.educ4.core.ports.driver.professor.FindProfessorsBySchoolIdPort;
-import br.com.educ4.core.ports.driver.professor.UpdateProfessorPort;
+import br.com.educ4.controller.professors.response.ShowProfessorResponse;
+import br.com.educ4.core.ports.driver.professor.*;
 import lombok.RequiredArgsConstructor;
+import org.bson.Document;
+import org.bson.types.ObjectId;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 @RestController
 @RequestMapping("schools/{schoolId}/professors")
@@ -23,6 +21,7 @@ public class ProfessorController {
     private final FindProfessorsBySchoolIdPort findProfessorsBySchoolIdPort;
     private final CreateProfessorPort createProfessorPort;
     private final UpdateProfessorPort updateProfessorPort;
+    private final FindProfessorBySchoolIdAndUserIdPort findProfessorBySchoolIdAndUserIdPort;
 
     @PostMapping
     public Map<String, Object> post(@PathVariable String schoolId, @RequestBody @Validated ProfessorRequest request) {
@@ -31,18 +30,18 @@ public class ProfessorController {
     }
 
     @PatchMapping("{userId}")
-    public void patch(@PathVariable String schoolId, @PathVariable String userId, @RequestBody ProfessorRequest request) {
+    public void patch(@PathVariable String schoolId, @PathVariable ObjectId userId, @RequestBody ProfessorRequest request) {
         updateProfessorPort.execute(schoolId, userId, request.toProfessor());
     }
 
     @GetMapping
-    public Set<ShowNameResponse> get(@PathVariable String schoolId) {
-        return findProfessorsBySchoolIdPort.execute(schoolId, ShowNameResponse.class);
+    public List<ShowProfessorResponse> get(@PathVariable ObjectId schoolId) {
+        return findProfessorsBySchoolIdPort.execute(schoolId, ShowProfessorResponse.class);
     }
 
-    @GetMapping("{professorId}")
-    public Professor getById(@PathVariable String userId, @PathVariable String professorId) {
-        return findProfessorByIdPort.execute(professorId, Professor.class);
+    @GetMapping("{userId}")
+    public ShowProfessorResponse getById(@PathVariable String schoolId, @PathVariable ObjectId userId) {
+        return findProfessorBySchoolIdAndUserIdPort.execute(schoolId, userId, ShowProfessorResponse.class);
     }
 
 }

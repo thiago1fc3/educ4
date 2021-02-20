@@ -7,6 +7,7 @@ import br.com.educ4.core.ports.driver.classroom.FindClassroomByIdPort;
 import br.com.educ4.core.ports.driver.classroom.GetAllClassroomsPort;
 import br.com.educ4.core.ports.driver.classroom.PatchClassroomPort;
 import lombok.RequiredArgsConstructor;
+import org.bson.types.ObjectId;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,23 +24,23 @@ public class ClassroomController {
     private final GetAllClassroomsPort getAllClassroomsPort;
 
     @PostMapping
-    public Map<String, Object> post(@PathVariable String schoolId, @RequestBody ClassroomRequest request) {
+    public Map<String, Object> post(@PathVariable ObjectId schoolId, @RequestBody ClassroomRequest request) {
         var response = createClassroomPort.execute(schoolId, request.toClassroom());
         return Map.of("id", response.getId());
     }
 
     @PatchMapping("{classroomId}")
-    public void patch(@PathVariable String schoolId, @PathVariable String classroomId, @RequestBody ClassroomRequest request) {
+    public void patch(@PathVariable ObjectId schoolId, @PathVariable String classroomId, @RequestBody ClassroomRequest request) {
         patchClassroomPort.execute(classroomId, request.toClassroom());
     }
 
     @GetMapping("{userId}")
-    public List<Classroom> getAll(@PathVariable String schoolId, @PathVariable String userId) {
+    public List<Classroom> getAll(@PathVariable ObjectId schoolId, @PathVariable String userId) {
         return getAllClassroomsPort.execute(Classroom.class);
     }
 
     @GetMapping("{classroomId}")
-    public Classroom getById(@PathVariable String schoolId, @PathVariable String classroomId) {
+    public Classroom getById(@PathVariable ObjectId schoolId, @PathVariable String classroomId) {
         return findClassroomByIdPort.execute(classroomId, Classroom.class);
     }
 }
