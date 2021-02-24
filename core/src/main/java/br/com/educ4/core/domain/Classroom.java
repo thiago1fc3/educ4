@@ -29,7 +29,5 @@ public class Classroom {
     @Indexed
     private ObjectId schoolId;
 
-    private Set<ClassroomFolder> folders;
-
 }
 

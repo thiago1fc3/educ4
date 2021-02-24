@@ -13,7 +13,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Builder
 @Accessors(chain = true)
 @Document
-public class ClassroomFolder {
+public class FolderClassroom {
+
+    private String id;
+
+    @Indexed
+    private ObjectId classroomId;
 
     @Indexed
     private ObjectId folderId;
