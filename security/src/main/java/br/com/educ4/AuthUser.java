@@ -7,6 +7,7 @@ import com.google.api.client.http.apache.v2.ApacheHttpTransport;
 import com.google.api.client.json.gson.GsonFactory;
 import lombok.RequiredArgsConstructor;
 import org.apache.http.HttpHeaders;
+import org.bson.types.ObjectId;
 
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
@@ -60,8 +61,8 @@ public class AuthUser implements AuthUserPort {
     }
 
     @Override
-    public String getUserId() {
-        return "602fc1342c37331b84a3af6a";
+    public ObjectId getUserId() {
+        return new ObjectId("602fc1342c37331b84a3af6a");
     }
 }
 

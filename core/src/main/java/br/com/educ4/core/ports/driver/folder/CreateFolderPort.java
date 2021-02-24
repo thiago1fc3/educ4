@@ -5,5 +5,5 @@ import org.bson.types.ObjectId;
 
 public interface CreateFolderPort {
 
-    Folder execute(ObjectId userId, Folder folder);
+    Folder execute(Folder folder);
 }

@@ -17,11 +17,16 @@ import java.time.LocalDateTime;
 @Document
 public class Collaborator {
 
+    private String id;
+
     private boolean admin;
     private LocalDateTime dateTime;
 
     @Indexed
-    private ObjectId professorId;
+    private ObjectId userId;
+
+    @Indexed
+    private ObjectId classroomId;
 
     public static Collaborator create() {
         return Collaborator.builder()

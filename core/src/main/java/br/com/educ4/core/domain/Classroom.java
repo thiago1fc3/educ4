@@ -10,8 +10,6 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 @Getter
@@ -31,15 +29,7 @@ public class Classroom {
     @Indexed
     private ObjectId schoolId;
 
-    private Set<Collaborator> collaborators;
     private Set<ClassroomFolder> folders;
-
-    public void addCollaborator(Collaborator collaborator) {
-        if (Objects.isNull(collaborators))
-            collaborators = new HashSet<>();
-
-        collaborators.add(collaborator);
-    }
 
 }
 

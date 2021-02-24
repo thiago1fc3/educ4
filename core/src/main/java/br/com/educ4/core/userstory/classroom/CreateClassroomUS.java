@@ -23,14 +23,12 @@ public class CreateClassroomUS implements CreateClassroomPort {
     public Classroom execute(ObjectId schoolId, Classroom classroom) {
 
         classroom.setSchoolId(schoolId);
+        classroom = repository.save(classroom);
 
         var collaborator = Collaborator.create()
                 .setAdmin(true)
-                .setProfessorId(new ObjectId(authUserPort.getUserId()));
-
-        classroom.addCollaborator(collaborator);
-
-        classroom = repository.save(classroom);
+                .setUserId(authUserPort.getUserId())
+                .setClassroomId(new ObjectId(classroom.getId()));
 
         var date = classroom.getBeginDate();
         while (date.isBefore(classroom.getEndDate())) {

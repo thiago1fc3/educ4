@@ -2,9 +2,9 @@ package br.com.educ4.core.userstory.folder;
 
 import br.com.educ4.core.domain.Folder;
 import br.com.educ4.core.ports.driven.repository.folder.FolderRepositoryPort;
+import br.com.educ4.core.ports.driven.security.AuthUserPort;
 import br.com.educ4.core.ports.driver.folder.CreateFolderPort;
 import lombok.RequiredArgsConstructor;
-import org.bson.types.ObjectId;
 
 import javax.inject.Named;
 
@@ -13,10 +13,11 @@ import javax.inject.Named;
 public class CreateFolderUS implements CreateFolderPort {
 
     private final FolderRepositoryPort repository;
+    private final AuthUserPort authUserPort;
 
     @Override
-    public Folder execute(ObjectId userId, Folder folder) {
-        folder.setUserId(userId);
+    public Folder execute(Folder folder) {
+        folder.setUserId(authUserPort.getUserId());
         return repository.save(folder);
     }
 
