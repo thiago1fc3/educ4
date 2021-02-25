@@ -1,9 +1,14 @@
 package br.com.educ4.controller.auth.responses;
 
-public interface ProfileResponse {
-    String getUsername();
+import lombok.Getter;
 
-    String getName();
+@Getter
+public class ProfileResponse {
 
-    String getPicture();
+    private String username;
+
+    private String name;
+
+    private String picture;
+    
 }

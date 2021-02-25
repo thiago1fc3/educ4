@@ -3,8 +3,8 @@ package br.com.educ4.controller.classrooms;
 import br.com.educ4.controller.classrooms.request.ClassroomRequest;
 import br.com.educ4.core.domain.Classroom;
 import br.com.educ4.core.ports.driver.classroom.CreateClassroomPort;
-import br.com.educ4.core.ports.driver.classroom.FindClassroomByIdPort;
-import br.com.educ4.core.ports.driver.classroom.GetAllClassroomsPort;
+import br.com.educ4.core.ports.driver.classroom.FindClassroomByIdAndSchoolIdPort;
+import br.com.educ4.core.ports.driver.classroom.FindClassroomBySchoolIdPort;
 import br.com.educ4.core.ports.driver.classroom.PatchClassroomPort;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
@@ -20,8 +20,8 @@ public class ClassroomController {
 
     private final CreateClassroomPort createClassroomPort;
     private final PatchClassroomPort patchClassroomPort;
-    private final FindClassroomByIdPort findClassroomByIdPort;
-    private final GetAllClassroomsPort getAllClassroomsPort;
+    private final FindClassroomByIdAndSchoolIdPort findClassroomByIdAndSchoolIdPort;
+    private final FindClassroomBySchoolIdPort findClassroomBySchoolIdPort;
 
     @PostMapping
     public Map<String, Object> post(@PathVariable ObjectId schoolId, @RequestBody ClassroomRequest request) {
@@ -31,16 +31,16 @@ public class ClassroomController {
 
     @PatchMapping("{classroomId}")
     public void patch(@PathVariable ObjectId schoolId, @PathVariable String classroomId, @RequestBody ClassroomRequest request) {
-        patchClassroomPort.execute(classroomId, request.toClassroom());
+        patchClassroomPort.execute(classroomId, schoolId, request.toClassroom());
     }
 
-    @GetMapping("{userId}")
-    public List<Classroom> getAll(@PathVariable ObjectId schoolId, @PathVariable String userId) {
-        return getAllClassroomsPort.execute(Classroom.class);
+    @GetMapping
+    public List<Classroom> getMy(@PathVariable ObjectId schoolId) {
+        return findClassroomBySchoolIdPort.execute(schoolId, Classroom.class);
     }
 
     @GetMapping("{classroomId}")
     public Classroom getById(@PathVariable ObjectId schoolId, @PathVariable String classroomId) {
-        return findClassroomByIdPort.execute(classroomId, Classroom.class);
+        return findClassroomByIdAndSchoolIdPort.execute(classroomId, schoolId, Classroom.class);
     }
 }

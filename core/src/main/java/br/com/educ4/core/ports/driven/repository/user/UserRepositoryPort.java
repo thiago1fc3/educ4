@@ -16,8 +16,6 @@ public interface UserRepositoryPort {
 
     <T> Optional<T> findByUsername(String username, Class<T> projection);
 
-    <T> List<T> findBySearch(String q, Class<T> projection);
-
     <T> Set<T> findByIdIn(Set<String> ids, Class<T> projection);
 
 }

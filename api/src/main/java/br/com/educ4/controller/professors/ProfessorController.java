@@ -4,7 +4,6 @@ import br.com.educ4.controller.professors.request.ProfessorRequest;
 import br.com.educ4.controller.professors.response.ShowProfessorResponse;
 import br.com.educ4.core.ports.driver.professor.*;
 import lombok.RequiredArgsConstructor;
-import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
