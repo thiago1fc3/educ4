@@ -2,6 +2,7 @@ package br.com.educ4.controller.schools.request;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.bson.types.ObjectId;
 
 import java.util.Set;
 
@@ -9,6 +10,6 @@ import java.util.Set;
 @Getter
 public class IdsRequest {
 
-    private Set<String> ids;
+    private Set<ObjectId> ids;
 
 }

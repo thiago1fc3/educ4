@@ -1,11 +1,11 @@
 package br.com.educ4.core.ports.driver.school;
 
-import br.com.educ4.core.domain.School;
+import org.bson.types.ObjectId;
 
 import java.util.List;
 
 public interface GetSchoolsByInstitutionIdPort {
 
-    List<School> execute(String institutionId);
+    <T> List<T> execute(ObjectId institutionId, Class<T> projection);
 
 }

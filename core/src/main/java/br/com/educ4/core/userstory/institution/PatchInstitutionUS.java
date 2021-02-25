@@ -18,7 +18,7 @@ public class PatchInstitutionUS implements PatchInstitutionPort {
 
     @Override
     public Institution execute(String institutionId, Institution institution) {
-        var dbInstitution = findInstitutionByIdUS.execute(institutionId);
+        var dbInstitution = findInstitutionByIdUS.execute(institutionId, Institution.class);
 
         getMapper().map(institution, dbInstitution);
 

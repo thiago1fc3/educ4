@@ -1,15 +1,17 @@
 package br.com.educ4.core.ports.driven.repository.classroom;
 
 import br.com.educ4.core.domain.Classroom;
+import org.bson.types.ObjectId;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ClassroomRepositoryPort {
 
-    Classroom findById(String classroomId);
-
     Classroom save(Classroom classroom);
 
-    List<Classroom> findAll();
+    <T> Optional<T> findByIdAndSchoolId(String id, ObjectId schoolId, Class<T> projection);
+
+    <T> List<T> findBySchoolId(ObjectId schoolId, Class<T> projection);
 
 }

@@ -5,6 +5,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -15,32 +18,28 @@ import java.util.Set;
 @Builder
 @Accessors(chain = true)
 @EqualsAndHashCode(of = "id")
+@Document
 public class School {
 
     private String id;
     private String name;
 
-    private String institutionId;
-    private Set<String> coordinatorsIds;
-    private Set<String> professorsIds;
+    @Indexed
+    private ObjectId institutionId;
 
-    public void addCoordinators(Set<String> coordinatorsIds) {
-        if(Objects.isNull(this.coordinatorsIds))
+    @Indexed
+    private Set<ObjectId> coordinatorsIds;
+
+    public void addCoordinators(Set<ObjectId> coordinatorsIds) {
+        if (Objects.isNull(this.coordinatorsIds))
             this.coordinatorsIds = new HashSet<>();
 
         this.coordinatorsIds.addAll(coordinatorsIds);
     }
 
-    public void removeCoordinators(Set<String> coordinatorsIds) {
-        if(Objects.nonNull(this.coordinatorsIds))
+    public void removeCoordinators(Set<ObjectId> coordinatorsIds) {
+        if (Objects.nonNull(this.coordinatorsIds))
             this.coordinatorsIds.removeAll(coordinatorsIds);
-    }
-
-    public void addProfessors(Set<String> professorsIds) {
-        if (Objects.isNull(this.professorsIds))
-            this.professorsIds = new HashSet<>();
-
-        this.professorsIds.addAll(professorsIds);
     }
 
 }

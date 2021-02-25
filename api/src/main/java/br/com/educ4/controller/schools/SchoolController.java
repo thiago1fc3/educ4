@@ -7,6 +7,7 @@ import br.com.educ4.core.ports.driver.school.FindSchoolByIdPort;
 import br.com.educ4.core.ports.driver.school.GetSchoolsByInstitutionIdPort;
 import br.com.educ4.core.ports.driver.school.PatchSchoolPort;
 import lombok.RequiredArgsConstructor;
+import org.bson.types.ObjectId;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,13 +36,13 @@ public class SchoolController {
     }
 
     @GetMapping
-    public List<School> getAll(@PathVariable String institutionId) {
-        return getSchoolsByInstitutionIdPort.execute(institutionId);
+    public List<School> getAll(@PathVariable ObjectId institutionId) {
+        return getSchoolsByInstitutionIdPort.execute(institutionId, School.class);
     }
 
     @GetMapping("{schoolId}")
     public School getById(@PathVariable String institutionId, @PathVariable String schoolId) {
         // TODO Verificar se a escola pertence a instituição
-        return findSchoolByIdPort.execute(schoolId);
+        return findSchoolByIdPort.execute(schoolId, School.class);
     }
 }

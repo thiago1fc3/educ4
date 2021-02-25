@@ -5,17 +5,18 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 @Getter
 @Setter
 @Builder
 @Accessors(chain = true)
 @EqualsAndHashCode(of = "id")
+@Document
 public class Classroom {
 
     private String id;
@@ -24,16 +25,8 @@ public class Classroom {
     private LocalDate beginDate;
     private LocalDate endDate;
 
-    private String schoolId;
-
-    private List<Collaborator> collaborators;
-
-    public void addCollaborator(Collaborator collaborator) {
-        if (Objects.isNull(collaborators))
-            collaborators = new ArrayList<>();
-
-        collaborators.add(collaborator);
-    }
+    @Indexed
+    private ObjectId schoolId;
 
 }
 
