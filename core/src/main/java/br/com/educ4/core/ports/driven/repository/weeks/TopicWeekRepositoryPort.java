@@ -14,4 +14,6 @@ public interface TopicWeekRepositoryPort {
     <T> List<T> findBy(Class<T> projection);
 
     void deleteById(String topicId);
+
+    //void patchById(String topicId);
 }
