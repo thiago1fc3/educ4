@@ -16,7 +16,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @EqualsAndHashCode(of = "id")
 @Document
 public class Professor {
+
     private String id;
+
     private String registration;
 
     @Indexed
