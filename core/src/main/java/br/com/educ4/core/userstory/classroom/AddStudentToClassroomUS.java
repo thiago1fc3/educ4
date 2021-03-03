@@ -2,27 +2,27 @@ package br.com.educ4.core.userstory.classroom;
 
 import br.com.educ4.core.domain.Classroom;
 import br.com.educ4.core.ports.driven.repository.classroom.ClassroomRepositoryPort;
-import br.com.educ4.core.ports.driver.classroom.PatchClassroomPort;
+import br.com.educ4.core.ports.driver.classroom.AddStudentToClassroomPort;
+import br.com.educ4.core.ports.driver.classroom.FindClassroomByIdPort;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
 
 import javax.inject.Named;
 
-import static br.com.educ4.core.utils.MapperConfig.getMapper;
-
 @Named
 @RequiredArgsConstructor
-public class PatchClassroomUS implements PatchClassroomPort {
+public class AddStudentToClassroomUS implements AddStudentToClassroomPort {
 
-    private final FindClassroomByIdAndSchoolIdAndSchoolIdUS findClassroomByIdAndSchoolIdUS;
+    private final FindClassroomByIdPort findClassroomByIdPort;
     private final ClassroomRepositoryPort repository;
 
     @Override
-    public Classroom execute(String classroomId, ObjectId schoolId, Classroom classroom) {
-        var dbClassroom = findClassroomByIdAndSchoolIdUS.execute(classroomId, schoolId, Classroom.class);
+    public void execute(String classroomId, ObjectId studentId) {
+        var dbClassroom = findClassroomByIdPort.execute(classroomId, Classroom.class);
 
-        getMapper().map(classroom, dbClassroom);
+        dbClassroom.addStudent(studentId);
 
-        return repository.save(dbClassroom);
+        repository.save(dbClassroom);
     }
+
 }

@@ -10,6 +10,9 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -21,12 +24,22 @@ public class Classroom {
 
     private String id;
     private String name;
+    private String description;
     private String course;
     private LocalDate beginDate;
     private LocalDate endDate;
 
     @Indexed
     private ObjectId schoolId;
+
+    private Set<ObjectId> students;
+
+    public void addStudent(ObjectId studentId) {
+        if (Objects.isNull(students))
+            students = new HashSet<>();
+
+        students.add(studentId);
+    }
 
 }
 

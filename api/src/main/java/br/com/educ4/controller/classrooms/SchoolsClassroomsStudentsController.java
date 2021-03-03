@@ -1,46 +1,23 @@
 package br.com.educ4.controller.classrooms;
 
-import br.com.educ4.controller.classrooms.request.ClassroomRequest;
-import br.com.educ4.core.domain.Classroom;
-import br.com.educ4.core.ports.driver.classroom.CreateClassroomPort;
-import br.com.educ4.core.ports.driver.classroom.FindClassroomByIdAndSchoolIdPort;
-import br.com.educ4.core.ports.driver.classroom.FindClassroomBySchoolIdPort;
-import br.com.educ4.core.ports.driver.classroom.PatchClassroomPort;
+import br.com.educ4.core.ports.driver.classroom.AddStudentToClassroomPort;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Map;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("schools/{schoolId}/classrooms")
+@RequestMapping("classrooms/{classroomId}/students")
 @RequiredArgsConstructor
-public class ClassroomController {
+public class SchoolsClassroomsStudentsController {
 
-    private final CreateClassroomPort createClassroomPort;
-    private final PatchClassroomPort patchClassroomPort;
-    private final FindClassroomByIdAndSchoolIdPort findClassroomByIdAndSchoolIdPort;
-    private final FindClassroomBySchoolIdPort findClassroomBySchoolIdPort;
+    private final AddStudentToClassroomPort addStudentToClassroomPort;
 
-    @PostMapping
-    public Map<String, Object> post(@PathVariable ObjectId schoolId, @RequestBody ClassroomRequest request) {
-        var response = createClassroomPort.execute(schoolId, request.toClassroom());
-        return Map.of("id", response.getId());
+    @PatchMapping("{studentId}")
+    public void patch(@PathVariable String classroomId, @PathVariable ObjectId studentId) {
+        addStudentToClassroomPort.execute(classroomId, studentId);
     }
 
-    @PatchMapping("{classroomId}")
-    public void patch(@PathVariable ObjectId schoolId, @PathVariable String classroomId, @RequestBody ClassroomRequest request) {
-        patchClassroomPort.execute(classroomId, schoolId, request.toClassroom());
-    }
-
-    @GetMapping
-    public List<Classroom> getMy(@PathVariable ObjectId schoolId) {
-        return findClassroomBySchoolIdPort.execute(schoolId, Classroom.class);
-    }
-
-    @GetMapping("{classroomId}")
-    public Classroom getById(@PathVariable ObjectId schoolId, @PathVariable String classroomId) {
-        return findClassroomByIdAndSchoolIdPort.execute(classroomId, schoolId, Classroom.class);
-    }
 }

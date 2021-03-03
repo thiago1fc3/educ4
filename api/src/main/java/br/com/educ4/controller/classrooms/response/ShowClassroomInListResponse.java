@@ -1,18 +1,12 @@
-package br.com.educ4.controller.users.response;
+package br.com.educ4.controller.classrooms.response;
 
-import br.com.educ4.core.domain.User;
-import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-@Builder
-public class DefaultUserResponse {
+public class ShowClassroomInListResponse {
 
-    private final String id;
+    private String id;
+    private String name;
+    private String description;
 
-    public static DefaultUserResponse fromUser(User user){
-        return DefaultUserResponse.builder()
-                .id(user.getId())
-                .build();
-    }
 }

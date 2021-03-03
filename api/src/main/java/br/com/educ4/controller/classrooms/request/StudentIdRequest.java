@@ -6,7 +6,7 @@ import org.bson.types.ObjectId;
 
 @Setter
 @Getter
-public class AddStudentToClassroomRequest {
+public class StudentIdRequest {
 
     private ObjectId studentId;
 

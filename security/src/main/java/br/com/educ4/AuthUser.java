@@ -63,14 +63,12 @@ public class AuthUser implements AuthUserPort {
 
     @Override
     public ObjectId getUserId() {
-        return new ObjectId("602fc1342c37331b84a3af6a");
-
-//        try {
-//            var id = findUserByUsernamePort.execute(getUser().getUsername(), User.class).getId();
-//            return new ObjectId(id);
-//        } catch (GeneralSecurityException | IOException e) {
-//            throw new IllegalArgumentException("Token not is valid!");
-//        }
+        try {
+            var id = findUserByUsernamePort.execute(getUser().getUsername(), User.class).getId();
+            return new ObjectId(id);
+        } catch (GeneralSecurityException | IOException e) {
+            throw new IllegalArgumentException("Token not is valid!");
+        }
     }
 }
 

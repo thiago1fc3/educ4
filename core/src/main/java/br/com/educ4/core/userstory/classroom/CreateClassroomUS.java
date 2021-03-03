@@ -16,7 +16,7 @@ import javax.inject.Named;
 public class CreateClassroomUS implements CreateClassroomPort {
 
     private final ClassroomRepositoryPort repository;
-    private final AuthUserPort authUserPort;
+//    private final AuthUserPort authUserPort;
     private final CreateWeeksByRangeDatePort createWeeks;
 
     @Override
@@ -25,10 +25,10 @@ public class CreateClassroomUS implements CreateClassroomPort {
         classroom.setSchoolId(schoolId);
         classroom = repository.save(classroom);
 
-        var collaborator = Collaborator.create()
-                .setAdmin(true)
-                .setUserId(authUserPort.getUserId())
-                .setClassroomId(new ObjectId(classroom.getId()));
+//        var collaborator = Collaborator.create()
+//                .setAdmin(true)
+//                .setUserId(authUserPort.getUserId())
+//                .setClassroomId(new ObjectId(classroom.getId()));
 
         createWeeks.execute(
                 new ObjectId(classroom.getId()),
