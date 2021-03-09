@@ -5,9 +5,11 @@ import br.com.educ4.controller.folders.responses.FolderResponse;
 import br.com.educ4.core.ports.driven.security.AuthUserPort;
 import br.com.educ4.core.ports.driver.folder.AddClassroomToFolderPort;
 import br.com.educ4.core.ports.driver.folder.CreateFolderPort;
+import br.com.educ4.core.ports.driver.folder.DeleteFolderByIdPort;
 import br.com.educ4.core.ports.driver.folder.FindFolderByUserIdPort;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -21,6 +23,7 @@ public class FoldersController {
     private final CreateFolderPort createFolderPort;
     private final FindFolderByUserIdPort findFolderByUserIdPort;
     private final AddClassroomToFolderPort addClassroomToFolderPort;
+    private final DeleteFolderByIdPort deleteFolderByIdPort;
     private final AuthUserPort authUserPort;
 
     @PostMapping
@@ -38,5 +41,11 @@ public class FoldersController {
     @GetMapping
     public Set<FolderResponse> post() {
         return findFolderByUserIdPort.execute(authUserPort.getUserId(), FolderResponse.class);
+    }
+
+    @DeleteMapping("{folderId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteFolderById(@PathVariable String folderId) {
+        deleteFolderByIdPort.execute(folderId);
     }
 }
