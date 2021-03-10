@@ -16,6 +16,6 @@ public class FindTopicWeekByIdUS implements FindTopicWeekByIdPort {
 
     @Override
     public <T> T execute(String id, Class<T> projection) {
-        return repository.findById(id, projection).orElseThrow(() -> new NoSuchElementException("Tópico não encontrado!"));
+        return repository.findById(id, projection).orElseThrow(() -> new NoSuchElementException("Topic not found!"));
     }
 }
