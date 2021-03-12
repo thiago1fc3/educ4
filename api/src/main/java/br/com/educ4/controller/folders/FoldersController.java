@@ -2,6 +2,7 @@ package br.com.educ4.controller.folders;
 
 import br.com.educ4.controller.folders.request.FolderRequest;
 import br.com.educ4.controller.folders.responses.FolderResponse;
+import br.com.educ4.core.domain.Folder;
 import br.com.educ4.core.ports.driven.security.AuthUserPort;
 import br.com.educ4.core.ports.driver.folder.*;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,7 @@ public class FoldersController {
 
     private final CreateFolderPort createFolderPort;
     private final FindFolderByUserIdPort findFolderByUserIdPort;
+    private final FindFolderByIdPort findFolderByIdPort;
     private final AddClassroomToFolderPort addClassroomToFolderPort;
     private final DeleteFolderByIdPort deleteFolderByIdPort;
     private final PatchFolderPort patchFolderPort;
@@ -45,6 +47,11 @@ public class FoldersController {
     @GetMapping
     public Set<FolderResponse> post() {
         return findFolderByUserIdPort.execute(authUserPort.getUserId(), FolderResponse.class);
+    }
+
+    @GetMapping("{folderId}")
+    public Folder getById(@PathVariable String folderId) {
+        return findFolderByIdPort.execute(folderId, Folder.class);
     }
 
     @DeleteMapping("{folderId}")
