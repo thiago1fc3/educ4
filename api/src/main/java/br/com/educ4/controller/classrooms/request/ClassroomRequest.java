@@ -9,6 +9,7 @@ import java.time.LocalDate;
 public class ClassroomRequest {
 
     private String name;
+    private String description;
     private String course;
     private LocalDate beginDate;
     private LocalDate endDate;
@@ -16,6 +17,7 @@ public class ClassroomRequest {
     public Classroom toClassroom() {
         return Classroom.builder()
                 .name(name)
+                .description(description)
                 .course(course)
                 .beginDate(beginDate)
                 .endDate(endDate)

@@ -14,4 +14,8 @@ public interface ClassroomRepositoryPort {
 
     <T> List<T> findBySchoolId(ObjectId schoolId, Class<T> projection);
 
+    <T> List<T> findByStudents(ObjectId studentId, Class<T> projection);
+
+    <T> T findById(String id, Class<T> projection);
+
 }

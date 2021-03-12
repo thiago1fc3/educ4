@@ -1,7 +1,6 @@
 package br.com.educ4.core.domain;
 
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -13,17 +12,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @Builder
 @Accessors(chain = true)
-@EqualsAndHashCode(of = "id")
 @Document
-public class Professor {
+public class TopicWeek {
 
     private String id;
-
-    private String registration;
-
-    @Indexed
-    private ObjectId userId;
+    private String title;
 
     @Indexed
-    private ObjectId schoolId;
+    private ObjectId weekId;
+
 }
