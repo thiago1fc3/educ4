@@ -12,5 +12,4 @@ public interface FolderClassroomRepositoryPort {
     <T> Optional<T> findById(String id, Class<T> projection);
 
     <T> List<T> findBy(Class<T> projection);
-
 }
