@@ -18,6 +18,6 @@ public interface ClassroomRepositoryPort {
 
     <T> T findById(String id, Class<T> projection);
 
-    <T> List<T> findByFolderId(ObjectId folderId, Class<T> projection);
+    //<T> List<T> findByFolderId(ObjectId folderId, Class<T> projection);
 
 }
