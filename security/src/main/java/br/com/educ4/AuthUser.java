@@ -47,8 +47,10 @@ public class AuthUser implements AuthUserPort {
 
             if (idToken != null) {
                 var payload = idToken.getPayload();
+                var id = findUserByUsernamePort.execute(payload.getEmail(), User.class).getId();
 
                 return User.builder()
+                        .id((String) id)
                         .picture((String) payload.get("picture"))
                         .username(payload.getEmail())
                         .name((String) payload.get("name"))
