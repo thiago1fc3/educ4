@@ -1,9 +1,7 @@
 package br.com.educ4.core.userstory.professor;
 
 import br.com.educ4.core.ports.driven.repository.professor.ProfessorRepositoryPort;
-import br.com.educ4.core.ports.driven.repository.school.SchoolRepositoryPort;
 import br.com.educ4.core.ports.driver.professor.FindProfessorByIdPort;
-import br.com.educ4.core.ports.driver.school.FindSchoolByIdPort;
 import lombok.RequiredArgsConstructor;
 
 import javax.inject.Named;

@@ -5,6 +5,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 
@@ -13,10 +16,14 @@ import java.time.LocalDate;
 @Builder
 @Accessors(chain = true)
 @EqualsAndHashCode(of = "id")
+@Document
 public class Week {
 
     private String id;
     private LocalDate beginDate;
     private boolean visible;
-    private String classroomId;
+
+    @Indexed
+    private ObjectId classroomId;
+
 }

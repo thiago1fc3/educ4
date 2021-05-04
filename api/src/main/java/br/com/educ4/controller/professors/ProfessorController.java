@@ -1,16 +1,10 @@
 package br.com.educ4.controller.professors;
 
 import br.com.educ4.controller.professors.request.ProfessorRequest;
-import br.com.educ4.controller.professors.response.ShowNameProfessorResponse;
-import br.com.educ4.controller.schools.request.IdsRequest;
-import br.com.educ4.core.domain.Professor;
-import br.com.educ4.core.domain.User;
-import br.com.educ4.core.ports.driver.professor.CreateProfessorPort;
-import br.com.educ4.core.ports.driver.professor.FindProfessorByIdPort;
-import br.com.educ4.core.ports.driver.professor.FindProfessorsBySchoolIdPort;
-import br.com.educ4.core.ports.driver.professor.GetProfessorsByUserIdPort;
-import br.com.educ4.core.ports.driver.school.AddProfessorsToSchoolPort;
+import br.com.educ4.controller.professors.response.ShowProfessorResponse;
+import br.com.educ4.core.ports.driver.professor.*;
 import lombok.RequiredArgsConstructor;
+import org.bson.types.ObjectId;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,31 +16,31 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ProfessorController {
 
-    private final CreateProfessorPort createProfessorPort;
     private final FindProfessorByIdPort findProfessorByIdPort;
     private final FindProfessorsBySchoolIdPort findProfessorsBySchoolIdPort;
-    private final AddProfessorsToSchoolPort addProfessorsToSchoolPort;
+    private final CreateProfessorPort createProfessorPort;
+    private final UpdateProfessorPort updateProfessorPort;
+    private final FindProfessorBySchoolIdAndUserIdPort findProfessorBySchoolIdAndUserIdPort;
 
     @PostMapping
-    public Map<String, Object> post(@RequestBody @Validated ProfessorRequest request) {
-        var response = createProfessorPort.execute(request.toProfessor());
+    public Map<String, Object> post(@PathVariable String schoolId, @RequestBody @Validated ProfessorRequest request) {
+        var response = createProfessorPort.execute(schoolId, request.toProfessor());
         return Map.of("id", response.getId());
     }
 
-    @PatchMapping
-    public Map<String, Object> patch(@PathVariable String schoolId, @RequestBody IdsRequest request) {
-        var response = addProfessorsToSchoolPort.execute(schoolId, request.getIds());
-        return Map.of("id", response.getId());
+    @PatchMapping("{userId}")
+    public void patch(@PathVariable String schoolId, @PathVariable ObjectId userId, @RequestBody ProfessorRequest request) {
+        updateProfessorPort.execute(schoolId, userId, request.toProfessor());
     }
 
     @GetMapping
-    public List<ShowNameProfessorResponse> get(@PathVariable String schoolId) {
-        return findProfessorsBySchoolIdPort.execute(schoolId, ShowNameProfessorResponse.class);
+    public List<ShowProfessorResponse> get(@PathVariable ObjectId schoolId) {
+        return findProfessorsBySchoolIdPort.execute(schoolId, ShowProfessorResponse.class);
     }
 
-    @GetMapping("{professorId}")
-    public Professor getById(@PathVariable String userId, @PathVariable String professorId) {
-        return findProfessorByIdPort.execute(professorId, Professor.class);
+    @GetMapping("{userId}")
+    public ShowProfessorResponse getById(@PathVariable String schoolId, @PathVariable ObjectId userId) {
+        return findProfessorBySchoolIdAndUserIdPort.execute(schoolId, userId, ShowProfessorResponse.class);
     }
 
 }

@@ -7,6 +7,7 @@ import br.com.educ4.core.ports.driver.school.FindSchoolByIdPort;
 import br.com.educ4.core.ports.driver.school.GetSchoolsByInstitutionIdPort;
 import br.com.educ4.core.ports.driver.school.PatchSchoolPort;
 import lombok.RequiredArgsConstructor;
+import org.bson.types.ObjectId;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,7 +36,7 @@ public class SchoolController {
     }
 
     @GetMapping
-    public List<School> getAll(@PathVariable String institutionId) {
+    public List<School> getAll(@PathVariable ObjectId institutionId) {
         return getSchoolsByInstitutionIdPort.execute(institutionId, School.class);
     }
 

@@ -36,6 +36,7 @@ public class InstitutionController {
 
     @GetMapping
     public List<Institution> getAll() {
+        // TODO buscar todas as instituições de uma escola
         return getAllInstitutionsPort.execute(Institution.class);
     }
 

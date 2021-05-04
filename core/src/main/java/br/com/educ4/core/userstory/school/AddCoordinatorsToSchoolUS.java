@@ -4,6 +4,7 @@ import br.com.educ4.core.domain.School;
 import br.com.educ4.core.ports.driven.repository.school.SchoolRepositoryPort;
 import br.com.educ4.core.ports.driver.school.AddCoordinatorsToSchoolPort;
 import lombok.RequiredArgsConstructor;
+import org.bson.types.ObjectId;
 
 import javax.inject.Named;
 import java.util.Set;
@@ -16,7 +17,7 @@ public class AddCoordinatorsToSchoolUS implements AddCoordinatorsToSchoolPort {
     private final SchoolRepositoryPort repository;
 
     @Override
-    public School execute(String schoolId, Set<String> coordinatorsIds) {
+    public School execute(String schoolId, Set<ObjectId> coordinatorsIds) {
         var dbSchool = findSchoolByIdlUS.execute(schoolId, School.class);
         dbSchool.addCoordinators(coordinatorsIds);
         return repository.save(dbSchool);

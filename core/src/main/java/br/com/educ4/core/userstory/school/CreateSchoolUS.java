@@ -6,6 +6,7 @@ import br.com.educ4.core.ports.driven.repository.school.SchoolRepositoryPort;
 import br.com.educ4.core.ports.driver.school.CreateSchoolPort;
 import br.com.educ4.core.userstory.institution.FindInstitutionByIdUS;
 import lombok.RequiredArgsConstructor;
+import org.bson.types.ObjectId;
 
 import javax.inject.Named;
 
@@ -20,7 +21,7 @@ public class CreateSchoolUS implements CreateSchoolPort {
     public School execute(String institutionId, School school) {
         var institution = findInstitutionByIdUS.execute(institutionId, Institution.class);
 
-        school.setInstitutionId(institution.getId());
+        school.setInstitutionId(new ObjectId(institution.getId()));
 
         return repository.save(school);
     }
