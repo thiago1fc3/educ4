@@ -15,6 +15,6 @@ public class FindUserByIdUS implements FindUserByIdPort {
 
     @Override
     public <T> T execute(String id, Class<T> projection) {
-        return repository.findById(id, projection).orElseThrow(() -> new NoSuchElementException("Usuário não encontrado!"));
+        return repository.findById(id, projection).orElseThrow(() -> new NoSuchElementException("User not found!"));
     }
 }
