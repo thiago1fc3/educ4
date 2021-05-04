@@ -14,4 +14,5 @@ public interface FolderRepositoryPort {
 
     <T> Set<T> findByUserId(ObjectId userId, Class<T> projection);
 
+    void deleteById(String folderId);
 }

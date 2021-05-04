@@ -3,11 +3,10 @@ package br.com.educ4.controller.classrooms;
 import br.com.educ4.AuthUser;
 import br.com.educ4.controller.classrooms.request.ClassroomRequest;
 import br.com.educ4.controller.classrooms.response.ShowClassroomInListResponse;
+import br.com.educ4.controller.professors.response.ShowProfessorResponse;
 import br.com.educ4.core.domain.Classroom;
-import br.com.educ4.core.ports.driver.classroom.CreateClassroomPort;
-import br.com.educ4.core.ports.driver.classroom.FindClassroomByIdAndSchoolIdPort;
-import br.com.educ4.core.ports.driver.classroom.FindClassroomByStudentsIdPort;
-import br.com.educ4.core.ports.driver.classroom.PatchClassroomPort;
+import br.com.educ4.core.domain.FolderClassroom;
+import br.com.educ4.core.ports.driver.classroom.*;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +23,7 @@ public class ClassroomController {
     private final PatchClassroomPort patchClassroomPort;
     private final FindClassroomByIdAndSchoolIdPort findClassroomByIdAndSchoolIdPort;
     private final FindClassroomByStudentsIdPort findClassroomByStudentsIdPort;
+    private final FindClassroomByFolderIdPort findClassroomByFolderIdPort;
     private final AuthUser authUser;
 
     @PostMapping
@@ -45,5 +45,10 @@ public class ClassroomController {
     @GetMapping("{classroomId}")
     public Classroom getById(@PathVariable ObjectId schoolId, @PathVariable String classroomId) {
         return findClassroomByIdAndSchoolIdPort.execute(classroomId, schoolId, Classroom.class);
+    }
+
+    @GetMapping("folders/{folderId}")
+    public List<Classroom> get(@PathVariable ObjectId folderId) {
+        return findClassroomByFolderIdPort.execute(folderId, Classroom.class);
     }
 }
