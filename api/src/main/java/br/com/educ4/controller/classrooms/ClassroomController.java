@@ -23,7 +23,7 @@ public class ClassroomController {
     private final PatchClassroomPort patchClassroomPort;
     private final FindClassroomByIdAndSchoolIdPort findClassroomByIdAndSchoolIdPort;
     private final FindClassroomByStudentsIdPort findClassroomByStudentsIdPort;
-    private final FindClassroomByFolderIdPort findClassroomByFolderIdPort;
+    //private final FindClassroomByFolderIdPort findClassroomByFolderIdPort;
     private final AuthUser authUser;
 
     @PostMapping
@@ -47,8 +47,8 @@ public class ClassroomController {
         return findClassroomByIdAndSchoolIdPort.execute(classroomId, schoolId, Classroom.class);
     }
 
-    @GetMapping("folders/{folderId}")
-    public List<Classroom> get(@PathVariable ObjectId folderId) {
-        return findClassroomByFolderIdPort.execute(folderId, Classroom.class);
-    }
+//    @GetMapping("folders/{folderId}")
+//    public List<Classroom> get(@PathVariable ObjectId folderId) {
+//        return findClassroomByFolderIdPort.execute(folderId, Classroom.class);
+//    }
 }

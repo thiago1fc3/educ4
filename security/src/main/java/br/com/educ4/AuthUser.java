@@ -47,12 +47,14 @@ public class AuthUser implements AuthUserPort {
 
             if (idToken != null) {
                 var payload = idToken.getPayload();
+                var user = findUserByUsernamePort.execute(payload.getEmail(), User.class);
 
                 return User.builder()
-                        .picture((String) payload.get("picture"))
-                        .username(payload.getEmail())
-                        .name((String) payload.get("name"))
-                        .enabled((boolean) payload.get("email_verified"))
+                        .id((String) user.getId())
+                        .picture((String) user.getPicture())
+                        .username(user.getUsername())
+                        .name((String) user.getName())
+                        .enabled(user.isEnabled())
                         .build();
 
             }
@@ -63,13 +65,13 @@ public class AuthUser implements AuthUserPort {
 
     @Override
     public ObjectId getUserId() {
-        return new ObjectId("602fc1342c37331b84a3af6a");
-//        try {
-//            var id = findUserByUsernamePort.execute(getUser().getUsername(), User.class).getId();
-//            return new ObjectId(id);
-//        } catch (GeneralSecurityException | IOException e) {
-//            throw new IllegalArgumentException("Token not is valid!");
-//        }
+//        return new ObjectId("602fc1342c37331b84a3af6a");
+        try {
+            var id = findUserByUsernamePort.execute(getUser().getUsername(), User.class).getId();
+            return new ObjectId(id);
+        } catch (GeneralSecurityException | IOException e) {
+            throw new IllegalArgumentException("Token not is valid!");
+        }
     }
 }
 
