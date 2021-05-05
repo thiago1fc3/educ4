@@ -46,15 +46,14 @@ public class AuthUser implements AuthUserPort {
             var idToken = gVerifier.verify(token);
 
             if (idToken != null) {
+
                 var payload = idToken.getPayload();
-                var user = findUserByUsernamePort.execute(payload.getEmail(), User.class);
 
                 return User.builder()
-                        .id((String) user.getId())
-                        .picture((String) user.getPicture())
-                        .username(user.getUsername())
-                        .name((String) user.getName())
-                        .enabled(user.isEnabled())
+                        .picture((String) payload.get("picture"))
+                        .username(payload.getEmail())
+                        .name((String) payload.get("name"))
+                        .enabled((boolean) payload.get("email_verified"))
                         .build();
 
             }
