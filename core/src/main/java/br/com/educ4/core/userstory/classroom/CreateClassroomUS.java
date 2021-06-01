@@ -1,9 +1,7 @@
 package br.com.educ4.core.userstory.classroom;
 
 import br.com.educ4.core.domain.Classroom;
-import br.com.educ4.core.domain.Collaborator;
 import br.com.educ4.core.ports.driven.repository.classroom.ClassroomRepositoryPort;
-import br.com.educ4.core.ports.driven.security.AuthUserPort;
 import br.com.educ4.core.ports.driver.classroom.CreateClassroomPort;
 import br.com.educ4.core.ports.driver.week.CreateWeeksByRangeDatePort;
 import lombok.RequiredArgsConstructor;

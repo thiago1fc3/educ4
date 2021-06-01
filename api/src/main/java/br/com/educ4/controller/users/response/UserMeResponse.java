@@ -6,16 +6,14 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class SearchUserResponse {
+public class UserMeResponse {
 
-    private final String id;
     private final String username;
     private final String picture;
     private final boolean enabled;
 
-    public static SearchUserResponse fromUser(User user){
-        return SearchUserResponse.builder()
-                .id(user.getId())
+    public static UserMeResponse fromUser(User user) {
+        return UserMeResponse.builder()
                 .username(user.getUsername())
                 .picture(user.getPicture())
                 .enabled(user.isEnabled())

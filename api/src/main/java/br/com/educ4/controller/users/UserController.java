@@ -1,6 +1,6 @@
 package br.com.educ4.controller.users;
 
-import br.com.educ4.AuthUser;
+import br.com.educ4.GetUserByGoogle;
 import br.com.educ4.controller.users.request.PatchUserRequest;
 import br.com.educ4.controller.users.response.DefaultUserResponse;
 import br.com.educ4.core.domain.User;
@@ -18,7 +18,7 @@ import java.security.GeneralSecurityException;
 @RequiredArgsConstructor
 public class UserController {
 
-    private final AuthUser authUser;
+    private final GetUserByGoogle getUserByGoogle;
     private final PatchUserPort patchUserPort;
     private final EnableUserPort enableUserPort;
     private final FindUserByUsernamePort findUserByUsernamePort;
@@ -44,9 +44,5 @@ public class UserController {
         return DefaultUserResponse.fromUser(response);
     }
 
-    @GetMapping("me")
-    public User me() throws GeneralSecurityException, IOException {
-        var googleUser = authUser.getUser();
-        return findUserByUsernamePort.execute(googleUser.getUsername(), User.class);
-    }
+
 }

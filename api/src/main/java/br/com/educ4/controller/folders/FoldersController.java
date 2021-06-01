@@ -3,7 +3,7 @@ package br.com.educ4.controller.folders;
 import br.com.educ4.controller.folders.request.FolderRequest;
 import br.com.educ4.controller.folders.responses.FolderResponse;
 import br.com.educ4.core.domain.Folder;
-import br.com.educ4.core.ports.driven.security.AuthUserPort;
+import br.com.educ4.core.ports.driven.security.AuthUserIdPort;
 import br.com.educ4.core.ports.driver.folder.*;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
@@ -24,7 +24,7 @@ public class FoldersController {
     private final AddClassroomToFolderPort addClassroomToFolderPort;
     private final DeleteFolderByIdPort deleteFolderByIdPort;
     private final PatchFolderPort patchFolderPort;
-    private final AuthUserPort authUserPort;
+    private final AuthUserIdPort authUserIdPort;
 
     @PostMapping
     public Map<String, Object> post(@RequestBody FolderRequest request) {
@@ -44,10 +44,10 @@ public class FoldersController {
         return Map.of("id", response.getId());
     }
 
-    @GetMapping
-    public Set<FolderResponse> post() {
-        return findFolderByUserIdPort.execute(authUserPort.getUserId(), FolderResponse.class);
-    }
+//    @GetMapping
+//    public Set<FolderResponse> post() {
+//        return findFolderByUserIdPort.execute(authUserIdPort.getUserId(), FolderResponse.class);
+//    }
 
     @GetMapping("{folderId}")
     public Folder getById(@PathVariable String folderId) {

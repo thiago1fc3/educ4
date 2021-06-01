@@ -1,4 +1,4 @@
-package br.com.educ4.controller.auth.responses;
+package br.com.educ4.controller.login.responses;
 
 import lombok.Getter;
 
