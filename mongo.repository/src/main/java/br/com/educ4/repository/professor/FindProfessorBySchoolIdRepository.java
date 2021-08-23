@@ -6,8 +6,8 @@ import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationOperation;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,9 +15,9 @@ import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
 import static org.springframework.data.mongodb.core.aggregation.LookupOperation.newLookup;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 
-@Named
+@Service
 @RequiredArgsConstructor
-public class FindProfessorBySchoolIdRepository implements FindProfessorBySchoolIdRepositoryPort {
+public final class FindProfessorBySchoolIdRepository implements FindProfessorBySchoolIdRepositoryPort {
 
     private final MongoTemplate database;
     private static final String DOCUMENT_NAME = "professor";

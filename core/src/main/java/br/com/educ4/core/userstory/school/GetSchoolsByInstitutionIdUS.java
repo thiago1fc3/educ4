@@ -4,11 +4,11 @@ import br.com.educ4.core.ports.driven.repository.school.SchoolRepositoryPort;
 import br.com.educ4.core.ports.driver.school.GetSchoolsByInstitutionIdPort;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
 import java.util.List;
 
-@Named
+@Service
 @RequiredArgsConstructor
 public class GetSchoolsByInstitutionIdUS implements GetSchoolsByInstitutionIdPort {
 

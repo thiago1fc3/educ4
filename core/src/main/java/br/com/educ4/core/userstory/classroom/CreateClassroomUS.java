@@ -6,15 +6,14 @@ import br.com.educ4.core.ports.driver.classroom.CreateClassroomPort;
 import br.com.educ4.core.ports.driver.week.CreateWeeksByRangeDatePort;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
-
-@Named
+@Service
 @RequiredArgsConstructor
 public class CreateClassroomUS implements CreateClassroomPort {
 
     private final ClassroomRepositoryPort repository;
-//    private final AuthUserPort authUserPort;
+    //    private final AuthUserPort authUserPort;
     private final CreateWeeksByRangeDatePort createWeeks;
 
     @Override

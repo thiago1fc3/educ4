@@ -6,10 +6,9 @@ import br.com.educ4.core.ports.driver.classroom.AddStudentToClassroomPort;
 import br.com.educ4.core.ports.driver.classroom.FindClassroomByIdPort;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
-
-@Named
+@Service
 @RequiredArgsConstructor
 public class AddStudentToClassroomUS implements AddStudentToClassroomPort {
 

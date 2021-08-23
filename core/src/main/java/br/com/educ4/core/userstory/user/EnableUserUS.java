@@ -5,10 +5,9 @@ import br.com.educ4.core.ports.driven.repository.user.UserRepositoryPort;
 import br.com.educ4.core.ports.driver.user.EnableUserPort;
 import br.com.educ4.core.ports.driver.user.FindUserByIdPort;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
-
-@Named
+@Service
 @RequiredArgsConstructor
 public class EnableUserUS implements EnableUserPort {
 

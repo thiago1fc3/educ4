@@ -8,12 +8,11 @@ import br.com.educ4.core.ports.driver.user.CreateUserPort;
 import br.com.educ4.core.ports.driver.user.ExistsUserByUsernamePort;
 import br.com.educ4.core.ports.driver.user.FindUserByUsernamePort;
 import lombok.RequiredArgsConstructor;
-
-import javax.inject.Named;
+import org.springframework.stereotype.Service;
 
 import static java.util.Objects.isNull;
 
-@Named
+@Service
 @RequiredArgsConstructor
 public class LoginByGoogleUS implements LoginByGooglePort {
 

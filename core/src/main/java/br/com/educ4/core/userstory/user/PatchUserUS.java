@@ -5,12 +5,11 @@ import br.com.educ4.core.ports.driven.repository.user.UserRepositoryPort;
 import br.com.educ4.core.ports.driver.user.FindUserByIdPort;
 import br.com.educ4.core.ports.driver.user.PatchUserPort;
 import lombok.RequiredArgsConstructor;
-
-import javax.inject.Named;
+import org.springframework.stereotype.Service;
 
 import static java.util.Objects.nonNull;
 
-@Named
+@Service
 @RequiredArgsConstructor
 public class PatchUserUS implements PatchUserPort {
 

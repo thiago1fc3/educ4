@@ -4,10 +4,9 @@ import br.com.educ4.core.ports.driven.repository.professor.ProfessorRepositoryPo
 import br.com.educ4.core.ports.driver.professor.ExitsProfessorBySchoolIdAndUserIdPort;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
-
-@Named
+@Service
 @RequiredArgsConstructor
 public class ExistsProfessorBySchoolIdAndUserIdUS implements ExitsProfessorBySchoolIdAndUserIdPort {
 
@@ -17,4 +16,5 @@ public class ExistsProfessorBySchoolIdAndUserIdUS implements ExitsProfessorBySch
     public boolean execute(String schoolId, ObjectId userId) {
         return repository.existsBySchoolIdAndUserId(schoolId, userId);
     }
+
 }

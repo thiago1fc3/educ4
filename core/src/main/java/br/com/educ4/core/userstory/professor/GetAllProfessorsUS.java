@@ -3,11 +3,11 @@ package br.com.educ4.core.userstory.professor;
 import br.com.educ4.core.ports.driven.repository.professor.ProfessorRepositoryPort;
 import br.com.educ4.core.ports.driver.professor.GetAllProfessorPort;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
 import java.util.List;
 
-@Named
+@Service
 @RequiredArgsConstructor
 public class GetAllProfessorsUS implements GetAllProfessorPort {
 

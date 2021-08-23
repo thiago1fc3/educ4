@@ -4,10 +4,9 @@ import br.com.educ4.core.domain.User;
 import br.com.educ4.core.ports.driven.repository.user.UserRepositoryPort;
 import br.com.educ4.core.ports.driver.user.CreateUserPort;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
-
-@Named
+@Service
 @RequiredArgsConstructor
 public class CreateUserUS implements CreateUserPort {
 

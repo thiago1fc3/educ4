@@ -2,18 +2,16 @@ package br.com.educ4.core.userstory.folder;
 
 import br.com.educ4.core.domain.FolderClassroom;
 import br.com.educ4.core.ports.driven.repository.folder.FolderClassroomRepositoryPort;
-import br.com.educ4.core.ports.driven.security.AuthUserIdPort;
 import br.com.educ4.core.ports.driver.folder.AddClassroomToFolderPort;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
-
-@Named
+@Service
 @RequiredArgsConstructor
 public class AddClassroomToFolderUS implements AddClassroomToFolderPort {
 
-//    private final AuthUserIdPort authUserIdPort;
+    //    private final AuthUserIdPort authUserIdPort;
     private final FolderClassroomRepositoryPort repository;
 
     @Override

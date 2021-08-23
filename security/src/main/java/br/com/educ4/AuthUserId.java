@@ -4,28 +4,24 @@ import br.com.educ4.core.ports.driven.security.AuthUserIdPort;
 import br.com.educ4.core.ports.driven.security.VerifyJWTPort;
 import com.nimbusds.jwt.SignedJWT;
 import lombok.RequiredArgsConstructor;
-import org.apache.http.HttpHeaders;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
-import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
-import java.util.Objects;
 
-@Named
+@Service
 @RequiredArgsConstructor
 public class AuthUserId implements AuthUserIdPort {
 
-    private final HttpServletRequest http;
     private final VerifyJWTPort verifyJWTPort;
 
     @Override
-    public String getUserId() {
+    public String getUserId(String jwt, String fingerprint) {
 
-        var jwt = getJtw();
+//        var jwt = getJtw();
+//
+//        var userAgent = http.getHeader(HttpHeaders.USER_AGENT);
 
-        var userAgent = http.getHeader(HttpHeaders.USER_AGENT);
-
-        var isValid = verifyJWTPort.execute(jwt, userAgent);
+        var isValid = verifyJWTPort.execute(jwt, fingerprint);
 
         if (!isValid)
             throw new IllegalArgumentException("Token not is valid!");
@@ -39,14 +35,15 @@ public class AuthUserId implements AuthUserIdPort {
 
     }
 
-    private String getJtw() {
-
-        var authorizationHeader = http.getHeader(HttpHeaders.AUTHORIZATION);
-        if (Objects.isNull(authorizationHeader))
-            throw new IllegalArgumentException("Token not is valid!");
-
-        return authorizationHeader.substring("Bearer".length()).trim();
-
-    }
+//    private String getJtw() {
+//
+//        var authorizationHeader = http.getHeader(HttpHeaders.AUTHORIZATION);
+//
+//        if (Objects.isNull(authorizationHeader))
+//            throw new IllegalArgumentException("Token not is valid!");
+//
+//        return authorizationHeader.substring("Bearer".length()).trim();
+//
+//    }
 
 }

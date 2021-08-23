@@ -3,7 +3,6 @@ package br.com.educ4.controller.folders;
 import br.com.educ4.controller.folders.request.FolderRequest;
 import br.com.educ4.controller.folders.responses.FolderResponse;
 import br.com.educ4.core.domain.Folder;
-import br.com.educ4.core.ports.driven.security.AuthUserIdPort;
 import br.com.educ4.core.ports.driver.folder.*;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
@@ -19,16 +18,17 @@ import java.util.Set;
 public class FoldersController {
 
     private final CreateFolderPort createFolderPort;
+    private final GetMyFoldersPort getMyFoldersPort;
     private final FindFolderByUserIdPort findFolderByUserIdPort;
     private final FindFolderByIdPort findFolderByIdPort;
     private final AddClassroomToFolderPort addClassroomToFolderPort;
     private final DeleteFolderByIdPort deleteFolderByIdPort;
     private final PatchFolderPort patchFolderPort;
-    private final AuthUserIdPort authUserIdPort;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Map<String, Object> post(@RequestBody FolderRequest request) {
-        var response = createFolderPort.execute(request.toFolder());
+        var response = createFolderPort.execute("x", request.toFolder());
         return Map.of("id", response.getId());
     }
 
@@ -44,10 +44,11 @@ public class FoldersController {
         return Map.of("id", response.getId());
     }
 
-//    @GetMapping
-//    public Set<FolderResponse> post() {
-//        return findFolderByUserIdPort.execute(authUserIdPort.getUserId(), FolderResponse.class);
-//    }
+    @GetMapping
+    public Set<FolderResponse> post() {
+        return getMyFoldersPort.execute("x", FolderResponse.class);
+
+    }
 
     @GetMapping("{folderId}")
     public Folder getById(@PathVariable String folderId) {

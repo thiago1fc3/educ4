@@ -1,6 +1,7 @@
 package br.com.educ4.controller.institutions;
 
-import br.com.educ4.controller.institutions.request.InstitutionRequest;
+import br.com.educ4.controller.institutions.requests.InstitutionRequest;
+import br.com.educ4.controller.institutions.responses.InstitutionResponse;
 import br.com.educ4.core.domain.Institution;
 import br.com.educ4.core.ports.driver.institution.CreateInstitutionPort;
 import br.com.educ4.core.ports.driver.institution.FindInstitutionByIdPort;
@@ -10,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("institutions")
@@ -23,15 +23,15 @@ public class InstitutionController {
     private final GetAllInstitutionsPort getAllInstitutionsPort;
 
     @PostMapping
-    public Map<String, Object> post(@RequestBody InstitutionRequest request) {
-        var response = createInstitutionPort.execute(request.toInstitution());
-        return Map.of("id", response.getId());
+    public InstitutionResponse post(@RequestBody InstitutionRequest request) {
+        var institution = createInstitutionPort.execute(request.toInstitution());
+        return InstitutionResponse.toResponse(institution);
     }
 
     @PatchMapping("{institutionId}")
-    public Map<String, Object> patch(@PathVariable String institutionId, @RequestBody InstitutionRequest request) {
-        var response = patchInstitutionPort.execute(institutionId, request.toInstitution());
-        return Map.of("id", response.getId());
+    public InstitutionResponse patch(@PathVariable String institutionId, @RequestBody InstitutionRequest request) {
+        var institution = patchInstitutionPort.execute(institutionId, request.toInstitution());
+        return InstitutionResponse.toResponse(institution);
     }
 
     @GetMapping

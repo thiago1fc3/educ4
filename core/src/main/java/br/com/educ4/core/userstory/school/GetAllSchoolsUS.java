@@ -3,11 +3,11 @@ package br.com.educ4.core.userstory.school;
 import br.com.educ4.core.ports.driven.repository.school.SchoolRepositoryPort;
 import br.com.educ4.core.ports.driver.school.GetAllSchoolsPort;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
 import java.util.List;
 
-@Named
+@Service
 @RequiredArgsConstructor
 public class GetAllSchoolsUS implements GetAllSchoolsPort {
 

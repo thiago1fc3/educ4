@@ -7,14 +7,14 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
 import com.google.api.client.http.apache.v2.ApacheHttpTransport;
 import com.google.api.client.json.gson.GsonFactory;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
 import static java.util.Collections.singletonList;
 
-@Named
+@Service
 @RequiredArgsConstructor
 public class GetUserByGoogle implements GetUserByGooglePort {
 

@@ -3,11 +3,11 @@ package br.com.educ4.core.userstory.folder;
 import br.com.educ4.core.ports.driven.repository.folder.FolderRepositoryPort;
 import br.com.educ4.core.ports.driver.folder.FindFolderByIdPort;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
 import java.util.NoSuchElementException;
 
-@Named
+@Service
 @RequiredArgsConstructor
 public class FindFolderByIdUS implements FindFolderByIdPort {
 

@@ -4,12 +4,9 @@ import br.com.educ4.core.domain.School;
 import br.com.educ4.core.ports.driven.repository.school.SchoolRepositoryPort;
 import br.com.educ4.core.ports.driver.school.PatchSchoolPort;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
-
-import static br.com.educ4.core.utils.MapperConfig.getMapper;
-
-@Named
+@Service
 @RequiredArgsConstructor
 public class PatchSchoolUS implements PatchSchoolPort {
 
@@ -20,7 +17,7 @@ public class PatchSchoolUS implements PatchSchoolPort {
 
         var dbSchool = findSchoolByIdlUS.execute(schoolId, School.class);
 
-        getMapper().map(school, dbSchool);
+//        getMapper().map(school, dbSchool);
 
         return repository.save(dbSchool);
     }

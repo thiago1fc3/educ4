@@ -16,7 +16,7 @@ public class MyUserController {
 
     @GetMapping
     public UserMeResponse me() {
-        return getMyUserPort.execute(UserMeResponse.class);
+        return getMyUserPort.execute("x", UserMeResponse.class);
     }
 
 }

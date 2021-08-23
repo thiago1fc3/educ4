@@ -4,11 +4,11 @@ import br.com.educ4.core.ports.driven.repository.folder.FolderRepositoryPort;
 import br.com.educ4.core.ports.driver.folder.FindFolderByUserIdPort;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
 import java.util.Set;
 
-@Named
+@Service
 @RequiredArgsConstructor
 public class FindFolderByUserIdUs implements FindFolderByUserIdPort {
 

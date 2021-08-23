@@ -5,13 +5,13 @@ import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.crypto.MACVerifier;
 import com.nimbusds.jwt.SignedJWT;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.Objects;
 
-@Named
+@Service
 @RequiredArgsConstructor
 public class VerifyJwtToken implements VerifyJWTPort {
 

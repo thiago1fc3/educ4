@@ -4,12 +4,9 @@ import br.com.educ4.core.domain.Institution;
 import br.com.educ4.core.ports.driven.repository.institution.InstitutionRepositoryPort;
 import br.com.educ4.core.ports.driver.institution.PatchInstitutionPort;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
-
-import static br.com.educ4.core.utils.MapperConfig.getMapper;
-
-@Named
+@Service
 @RequiredArgsConstructor
 public class PatchInstitutionUS implements PatchInstitutionPort {
 
@@ -20,7 +17,7 @@ public class PatchInstitutionUS implements PatchInstitutionPort {
     public Institution execute(String institutionId, Institution institution) {
         var dbInstitution = findInstitutionByIdUS.execute(institutionId, Institution.class);
 
-        getMapper().map(institution, dbInstitution);
+//        getMapper().map(institution, dbInstitution);
 
         return repository.save(dbInstitution);
     }

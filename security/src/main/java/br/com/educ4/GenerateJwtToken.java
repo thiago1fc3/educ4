@@ -9,12 +9,12 @@ import com.nimbusds.jose.JWSHeader;
 import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
 import java.time.Instant;
 import java.util.Date;
 
-@Named
+@Service
 public class GenerateJwtToken implements GenerateJWTPort {
 
     public String execute(User user, String fingerprint) {

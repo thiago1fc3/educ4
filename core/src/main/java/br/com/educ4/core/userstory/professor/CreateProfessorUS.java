@@ -6,10 +6,9 @@ import br.com.educ4.core.ports.driver.professor.CreateProfessorPort;
 import br.com.educ4.core.ports.driver.professor.FindProfessorBySchoolIdAndUserIdPort;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
-
-@Named
+@Service
 @RequiredArgsConstructor
 public class CreateProfessorUS implements CreateProfessorPort {
 

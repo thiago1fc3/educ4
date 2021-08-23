@@ -3,11 +3,11 @@ package br.com.educ4.core.userstory.institution;
 import br.com.educ4.core.ports.driven.repository.institution.InstitutionRepositoryPort;
 import br.com.educ4.core.ports.driver.institution.FindInstitutionByIdPort;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
 import java.util.NoSuchElementException;
 
-@Named
+@Service
 @RequiredArgsConstructor
 public class FindInstitutionByIdUS implements FindInstitutionByIdPort {
 

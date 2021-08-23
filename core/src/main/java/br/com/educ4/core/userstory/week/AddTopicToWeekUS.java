@@ -5,10 +5,9 @@ import br.com.educ4.core.ports.driven.repository.weeks.TopicWeekRepositoryPort;
 import br.com.educ4.core.ports.driver.week.AddTopicToWeekPort;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
-
-@Named
+@Service
 @RequiredArgsConstructor
 public class AddTopicToWeekUS implements AddTopicToWeekPort {
 

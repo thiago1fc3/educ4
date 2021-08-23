@@ -4,11 +4,11 @@ import br.com.educ4.core.ports.driven.repository.classroom.ClassroomRepositoryPo
 import br.com.educ4.core.ports.driver.classroom.FindClassroomByIdAndSchoolIdPort;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
 import java.util.NoSuchElementException;
 
-@Named
+@Service
 @RequiredArgsConstructor
 public class FindClassroomByIdAndSchoolIdAndSchoolIdUS implements FindClassroomByIdAndSchoolIdPort {
 

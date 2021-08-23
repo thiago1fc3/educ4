@@ -5,12 +5,9 @@ import br.com.educ4.core.ports.driven.repository.classroom.ClassroomRepositoryPo
 import br.com.educ4.core.ports.driver.classroom.PatchClassroomPort;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
-
-import static br.com.educ4.core.utils.MapperConfig.getMapper;
-
-@Named
+@Service
 @RequiredArgsConstructor
 public class PatchClassroomUS implements PatchClassroomPort {
 
@@ -21,7 +18,7 @@ public class PatchClassroomUS implements PatchClassroomPort {
     public Classroom execute(String classroomId, ObjectId schoolId, Classroom classroom) {
         var dbClassroom = findClassroomByIdAndSchoolIdUS.execute(classroomId, schoolId, Classroom.class);
 
-        getMapper().map(classroom, dbClassroom);
+//        getMapper().map(classroom, dbClassroom);
 
         return repository.save(dbClassroom);
     }

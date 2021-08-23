@@ -5,12 +5,12 @@ import br.com.educ4.core.ports.driven.repository.week.WeekRepositoryPort;
 import br.com.educ4.core.ports.driver.week.CreateWeeksByRangeDatePort;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-@Named
+@Service
 @RequiredArgsConstructor
 public class CreateWeeksByRangeDateUS implements CreateWeeksByRangeDatePort {
 
